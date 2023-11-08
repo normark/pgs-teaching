@@ -1,0 +1,45 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.default-output-style {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  /*background-color: transparent !important;*/
+}
+
+.tip {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.tip-headline {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.75em;
+  cursor: pointer;
+}
+
+/* fix line number distance */
+pre.numberSource code > span > a:first-child::before {
+  left: -0.7em;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+/* fix line number distance */
+pre.numberSource code {
+  left: 1.25em;
+}
+
+

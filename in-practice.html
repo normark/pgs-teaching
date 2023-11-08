@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 In practice | Polygenic indices</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 In practice | Polygenic indices" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 In practice | Polygenic indices" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2023-11-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Polygenic Scores</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="in-practice.html"><a href="in-practice.html"><i class="fa fa-check"></i><b>1</b> In practice</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="in-practice.html"><a href="in-practice.html#computing-environment"><i class="fa fa-check"></i><b>1.1</b> Computing environment</a></li>
+<li class="chapter" data-level="1.2" data-path="in-practice.html"><a href="in-practice.html#working-with-prsice"><i class="fa fa-check"></i><b>1.2</b> Working with PRSICE</a>
+<ul>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-1-prepare-genotypes"><i class="fa fa-check"></i>Step 1: Prepare genotypes</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-2-prepare-summary-statistics"><i class="fa fa-check"></i>Step 2: Prepare summary statistics</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-3-create-the-score"><i class="fa fa-check"></i>Step 3: Create the score</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-4-evaluate-the-score"><i class="fa fa-check"></i>Step 4: Evaluate the score</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="in-practice.html"><a href="in-practice.html#working-with-bigsnpr-and-ldpred"><i class="fa fa-check"></i><b>1.3</b> Working with bigsnpr and LDpred</a>
+<ul>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-1-prepare-genotypes-1"><i class="fa fa-check"></i>Step 1: Prepare genotypes</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-2-prepare-summary-statistics-1"><i class="fa fa-check"></i>Step 2: Prepare summary statistics</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-3-match-summary-statistics-to-genotypes"><i class="fa fa-check"></i>Step 3: Match summary statistics to genotypes</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-4-calculate-ld-information"><i class="fa fa-check"></i>Step 4: Calculate LD information</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-5-calculate-adjusted-weights-using-ldpred-inf"><i class="fa fa-check"></i>Step 5: Calculate adjusted weights using LDPred Inf</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-6-calculate-pgs-in-the-analysis-sample"><i class="fa fa-check"></i>Step 6: Calculate PGS in the analysis sample</a></li>
+<li class="chapter" data-level="" data-path="in-practice.html"><a href="in-practice.html#step-7-evaluate-the-score"><i class="fa fa-check"></i>Step 7: Evaluate the score</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Polygenic indices</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="in-practice" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> In practice<a href="in-practice.html#in-practice" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The goal of this chapter is to generate a PGS for BMI using first PRSice and then LDpred. <!--You've already seen the basics of constructing a polygenic score in PLINK, and while we will use other software here, the same considerations apply about genetic ancestry, sa--></p>
+<p>PRSice is an easy to use command line tool to create polygenic scores using clumping/thresholding. LDpred (as implemented in the R-package bigsnpr) is a Bayesian approach that adjust the GWAS effect sizes to account for LD, and as you will see, is more elaborate to use.</p>
+<p>To follow this tutorial, you should open an empty textfile/R-file and go along as you read, filling in the code piece by piece. By the end of the document you should have two polygenic scores for BMI, one created with PRSice, the other with LDpred.</p>
+<p>We will use the following files:</p>
+<ul>
+<li>data/bmi_summary_statistics_final.txt</li>
+<li>data/bmi_summary_statistics_prsice.txt</li>
+<li>data/bmi_phenotype_final.txt</li>
+<li>data/bmi_phenotype_prsice.txt</li>
+<li>data/principal_components.txt</li>
+<li>data/genotypes.bed</li>
+<li>data/genotypes_prsice.bed</li>
+<li>data/precomputed_genetic_positions.rds</li>
+<li>data/precomputed_ld.rds</li>
+<li>data/precomputed_correlations_chr{0, …, 22}.rds</li>
+</ul>
+<p>You should make sure to <a href="https://www.dropbox.com/scl/fi/p74inji57f2vkz0wrk7c6/files.zip?rlkey=7nvvkb74et0jc4u7qpnphedj0&amp;dl=0">download them</a>. The file is quite large (about 3gb), so may take a while.</p>
+<p>The summary statistics, phenotypes, and genotypes are from Chapter 10 of Mills et al. (2020) with some minor tweaks. Please don’t use these data anywhere else, as they have been modified for the tutorial.</p>
+<p>The examples in the PRSice section of this tutorial also borrows heavily from Chapter 10 of Mills et al. (2020). Please consult the additional examples and details in Mills et al. (2020), if you are going to use PRSice in your research.</p>
+<div id="computing-environment" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Computing environment<a href="in-practice.html#computing-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To set up your computing environment, you’ll need to do the following:</p>
+<ul>
+<li><p>Download and unpack <a href="https://choishingwan.github.io/PRSice/">PRSice</a>. Make sure to select the correct version for your platform as it contains a platform specific binary.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p></li>
+<li><p>Download and install <a href="https://r-project.org">R &gt;4</a>, if you haven’t already.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p></li>
+<li><p>Download and install <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>, or use your favorite text editor. If you are on Mac and do not use RStudio, then you will need to install <a href="https://www.xquartz.org/">XQuartz</a> to do plotting (and to export plots from PRSice).</p></li>
+<li><p>In R, install the following packages: <code>glue</code>, <code>data.table</code>, <code>ggplot2</code>, <code>bigsnpr</code>. Make sure you install dependencies as well. To do this, call <code>install.packages</code> in R with <code>dependencies = TRUE</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="in-practice.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
+<span id="cb1-2"><a href="in-practice.html#cb1-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&#39;data.table&#39;</span>, <span class="st">&#39;ggplot2&#39;</span>, <span class="st">&#39;bigsnpr&#39;</span>, <span class="st">&#39;glue&#39;</span>),</span>
+<span id="cb1-3"><a href="in-practice.html#cb1-3" tabindex="-1"></a>  <span class="at">dependencies =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-4"><a href="in-practice.html#cb1-4" tabindex="-1"></a>);</span></code></pre></div>
+<p>We will assume throughout that you have loaded these packages into your global environment. You can do this by calling the <code>library</code> function for each package, like so:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="in-practice.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(data.table);</span>
+<span id="cb2-2"><a href="in-practice.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2);</span>
+<span id="cb2-3"><a href="in-practice.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(bigsnpr);</span>
+<span id="cb2-4"><a href="in-practice.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(glue);</span></code></pre></div>
+<p>You have to do this every time you open a new R session. Throughout the tutorial, all package-specific function calls will be prefixed by their package name, to make it clear which package they belong to. For example, if we want to call <code>snp_readBed</code> from the <code>bigsnpr</code> package, we will use <code>bigsnpr::snp_readBed</code>.</p></li>
+<li><p>For convenience, make sure R is in your path. On Mac/Linux this should happen automatically, but on <a href="https://choishingwan.github.io/PRSice/extra_steps/">Windows you may need to add it manually</a>.</p></li>
+</ul>
+</div>
+<div id="working-with-prsice" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Working with PRSICE<a href="in-practice.html#working-with-prsice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>PRSice is made up of an R-script (<code>PRSice.R</code>) and a binary compiled for your platform (<code>PRSice_mac</code> on MacOS, <code>PRSice_win64.exe</code> on Windows, and <code>PRSice_linux</code> on Linux). To run PRSice, you execute the R script from a command line (using <code>Rscript</code>) and give it the path to the binary as a command line argument. The R-script will then take care of calling the binary behind the scenes, depending on how we want to construct our polygenic score. This is quite a weird setup, but it is what it is.</p>
+<p>PRSice is quite popular as you can rather easily create polygenic scores using just a few command line calls. The software is also quite fast as the core of the algorithms run directly from native machine code instead of through the R interpreter.</p>
+<p>There’s four main steps to create a polygenic score in PRSice:</p>
+<ol style="list-style-type: decimal">
+<li>Prepare the genotypes of the individuals for which you want to construct a polygenic score. We call this sample of individuals the ‘target’ or ‘analysis’ sample.</li>
+<li>Prepare the summary statistics for the phenotype for which you want to construct a polygenic score. In this tutorial, our phenotype is BMI. We use ‘discovery’ sample to refer to the sample used to generate the summary statistics. <!--Recall that this discovery sample must not overlap with your analysis sample.--></li>
+<li>Run PRSice to generate the polygenic score.</li>
+<li>Evaluate the predictive power of your score.</li>
+</ol>
+<div id="step-1-prepare-genotypes" class="section level3 unnumbered hasAnchor">
+<h3>Step 1: Prepare genotypes<a href="in-practice.html#step-1-prepare-genotypes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We assume that you have QC’ed your genotypes as described in the earlier lectures/lab sessions, and that they are stored in PLINK format (although PRSice can also work with BGEN-files if needed). For this tutorial, the genotypes have already been prepared and saved in the files <code>genotypes_prsice.bed</code>, <code>genotypes_prsice.bim</code>, and <code>genotypes_prsice.fam</code>.</p>
+</div>
+<div id="step-2-prepare-summary-statistics" class="section level3 unnumbered hasAnchor">
+<h3>Step 2: Prepare summary statistics<a href="in-practice.html#step-2-prepare-summary-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As we will see later, PRSice will help you with some of the preparation of the summary statistics. However, there are a few things you may want to check beforehand. To do this, it’s usually easiest to just load the summary statistics into R, so you can filter/modify them as needed.</p>
+<p>Let’s have a look at the BMI summary statistics in <code>data/bmi_summary_statistics_prsice.txt</code> by typing the following in R:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="in-practice.html#cb3-1" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/bmi_summary_statistics_prsice.txt&#39;</span>);</span></code></pre></div>
+<pre class="default-output-style"><code>         MarkerName A1 A2    Beta   Pval
+      1:       rs10  A  C  0.0013 0.7500
+      2:  rs1000000  A  G  0.0001 0.9600
+      3: rs10000010  T  C -0.0001 0.9400
+      4: rs10000013  A  C -0.0061 0.0033
+      5: rs10000017  T  C  0.0041 0.0480
+     ---                                
+1977871:  rs9999971  A  G  0.0020 0.8100
+1977872:  rs9999979  T  C  0.0012 0.4900
+1977873:  rs9999987  T  C  0.0123 0.0013
+1977874:  rs9999997  A  G -0.0035 0.0440
+1977875:  rs9999998  T  C -0.0031 0.2300</code></pre>
+<p>Let’s also check out the phenotype file <code>data/bmi_phenotype_prsice.txt</code> as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="in-practice.html#cb5-1" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/bmi_phenotype_prsice.txt&#39;</span>);</span></code></pre></div>
+<pre class="default-output-style"><code>          IID      bmi
+   1: HG00096 25.02283
+   2: HG00097 24.85364
+   3: HG00099 23.68929
+   4: HG00100 27.01620
+   5: HG00101 21.46162
+  ---                 
+1088: NA20816 23.42486
+1089: NA20818 19.88306
+1090: NA20819 25.00421
+1091: NA20826 23.36876
+1092: NA20828 28.16467</code></pre>
+<p>It is common to QC summary statistics by filtering on INFO score and MAF (minor allele frequency), if these are available in the summary statistics. When we call PRSice later on, we can do this filtering by setting certain command line arguments, so we don’t need to do it manually in R. Usually you’d want an INFO score threshold around 0.8 and a MAF threshold around 0.01. In our summary statistics, we do not have INFO score or MAF, so we can’t filter on this information.</p>
+<p>PRSice will automatically deal with strand flips and match the summary statistics up to the genotypes, by finding the (sub)set of SNPs that are in both datasets. However, PRSice will not automatically remove ambiguous SNPs, so you must either remove these beforehand in R (filter all variants where the alleles are A/T or G/C, and drop SNPs where the summary statistics and the genotype data report different alleles that cannot be matched), or use the <code>--extract</code> argument later on in PRsice. Other checks you may want to do is make sure that only chromosomes 1-22 are in the summary statistics (unless you specifically want the sex chromosomes!) and that any non-SNP variants have been removed (sometimes GWAS output can contain other types of variants!).</p>
+<p>Often it is also helpful to know which allele was counted in the discovery GWAS, sometimes referred to as the effect or risk allele. However, when you test your polygenic score (Step 4), you can verify that the association has the correct sign, and if not, then flip the sign on your polygenic score.</p>
+<p>Note that PRSice expects all files to be whitespace delimited, so if you save your summary statistics from R, then make sure to set the appropriate delimiter. You should also avoid weird characters or spaces in column names, as they can cause trouble.</p>
+<p>In our case, the summary statistics in <code>data/bmi_summary_statistics_prsice.txt</code> have already been prepared and are ready to be fed into PRSice. You should still load them into R and have look though!</p>
+<!--In R, you should make sure that the SNPs you have in your genotypes and summary statistics overlap. You'll want to remove ambiguous SNPs (that is, where the alleles are A/T or G/C). -->
+<!--Genome build, Effect allele-->
+<!--Whenever we call PRSICE below, we will always set the path to the binary using the command line argument. Usually, the binary will be in the same folder as the R-script so on Mac we would call PRSICE with the argument `--prsice ./PRSice_mac`.
+
+PRSice requires the following columns in the summary statistics: effective allele (--A1), effect size estimates (--stat), p-value for association (--pvalue), and the SNP ID (--snp).
+
+We can specify the column names using the following arguments: `--chr, --A1, --A2, --stat, --snp, --bp, --pvalue`.-->
+<!--MAF and INFO score threshold in PRSICE-->
+<!--If an imputation info score or the minor allele frequencies (MAF) are also included in the file, --base-info <Info Name>:<Info Threshold> and --base-maf <MAF Name>:<MAF Threshold> can be used to filter SNPs based on their INFO score and MAF respectively.-->
+</div>
+<div id="step-3-create-the-score" class="section level3 unnumbered hasAnchor">
+<h3>Step 3: Create the score<a href="in-practice.html#step-3-create-the-score" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>By now you should have QC’ed genotypes (in <code>data/genotypes_prsice</code>) and summary statistics (in <code>data/bmi_summary_statistics_prsice.txt</code>) for your sample and phenotype of interest. We can then construct the polygenic score by executing the following call to PRSICE from the command line:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="in-practice.html#cb7-1" tabindex="-1"></a><span class="ex">Rscript</span> software/PRSice_mac/PRSice.R <span class="dt">\</span></span>
+<span id="cb7-2"><a href="in-practice.html#cb7-2" tabindex="-1"></a>  <span class="at">--prsice</span> software/PRSice_mac/PRSice_mac <span class="dt">\</span></span>
+<span id="cb7-3"><a href="in-practice.html#cb7-3" tabindex="-1"></a>  <span class="at">--base</span> data/bmi_summary_statistics_prsice.txt <span class="dt">\</span></span>
+<span id="cb7-4"><a href="in-practice.html#cb7-4" tabindex="-1"></a>  <span class="at">--target</span> data/genotypes_prsice <span class="dt">\</span></span>
+<span id="cb7-5"><a href="in-practice.html#cb7-5" tabindex="-1"></a>  <span class="at">--pheno</span> data/bmi_phenotype_prsice.txt <span class="dt">\</span></span>
+<span id="cb7-6"><a href="in-practice.html#cb7-6" tabindex="-1"></a>  <span class="at">--ignore-fid</span> <span class="dt">\</span></span>
+<span id="cb7-7"><a href="in-practice.html#cb7-7" tabindex="-1"></a>  <span class="at">--pheno-col</span> bmi <span class="dt">\</span></span>
+<span id="cb7-8"><a href="in-practice.html#cb7-8" tabindex="-1"></a>  <span class="at">--binary-target</span> F <span class="dt">\</span></span>
+<span id="cb7-9"><a href="in-practice.html#cb7-9" tabindex="-1"></a>  <span class="at">--beta</span> <span class="dt">\</span></span>
+<span id="cb7-10"><a href="in-practice.html#cb7-10" tabindex="-1"></a>  <span class="at">--A1</span> A1 <span class="dt">\</span></span>
+<span id="cb7-11"><a href="in-practice.html#cb7-11" tabindex="-1"></a>  <span class="at">--A2</span> A2 <span class="dt">\</span></span>
+<span id="cb7-12"><a href="in-practice.html#cb7-12" tabindex="-1"></a>  <span class="at">--stat</span> Beta <span class="dt">\</span></span>
+<span id="cb7-13"><a href="in-practice.html#cb7-13" tabindex="-1"></a>  <span class="at">--snp</span> MarkerName <span class="dt">\</span></span>
+<span id="cb7-14"><a href="in-practice.html#cb7-14" tabindex="-1"></a>  <span class="at">--pvalue</span> Pval <span class="dt">\</span></span>
+<span id="cb7-15"><a href="in-practice.html#cb7-15" tabindex="-1"></a>  <span class="at">--out</span> BMI_PGS</span></code></pre></div>
+<p>This command tells <code>Rscript</code> (the executable of the R interpreter) to run the R-script stored in <code>software/PRSice_mac/PRSice.R</code> and supply it with all the following command line arguments. Let’s go through each of them:</p>
+<ul>
+<li><code>--prsice software/PRSice_mac/PRSice_mac</code> Tells PRSice.R to look for the PRSice binary at the specified path, in our case <code>software/PRSice_mac/PRSice_mac</code>. If you are on Windows or Linux, the path will be different.</li>
+<li><code>--base data/bmi_summary_statistics_prsice.txt</code> The path to the summary statistics from the discovery GWAS for our phenotype. In this case the path is <code>data/bmi_summary_statistics_prsice.txt</code></li>
+<li><code>--target data/genotypes_prsice</code> The path to the genotypes for our analysis sample. Our genotype data are stored in <code>data/genotypes_prsice</code> (we drop the file extension, as PRSice will automatically add .fam, .bim, or .bed depending on which file it needs to load).</li>
+<li><code>--pheno data/bmi_phenotype_prsice.txt</code> path to the file with phenotype information. this is for testing the predictive power of the score and selecting the “best” p-value threshold. you do not need to supply this file, and if you don’t, prsice it’s on you to select the p-value threshold and test the pgs. our phenotype data are stored in <code>data/bmi_phenotype_prsice.txt</code>.</li>
+<li><code>--ignore-fid</code> tells PRSice that there are no FID (family ID) column in our phenotype file.</li>
+<li><code>--pheno-col bmi</code> tells PRSice to use the column with name <code>bmi</code> in the phenotype file.</li>
+<li><code>--binary-target F</code> Whether the phenotype is binary or continuous. <code>F</code> is short for <code>FALSE</code> and specifies that the phenotype in this case is continuous. If you have a binary phenotype then use <code>T</code> for <code>TRUE</code>.</li>
+<li><code>--beta</code> specifies that our effect sizes do not need to be transformed (if we had odds ratio, we would instead use <code>--or</code>).</li>
+<li><code>--A1 A1</code>, <code>--A2 A2</code>, <code>--stat Beta</code>, <code>--snp MarkerName</code>, <code>--pvalue Pval</code> give PRSice the column names as they appear in our summary statistics: First allele is in column <code>A1</code>, second allele is in column <code>A2</code>, effect size is in column <code>Beta</code>, SNP ID is in column <code>MarkerName</code>, and p value is in column <code>Pval</code>.</li>
+<li><code>--out BMI_PGS</code> tells PRsice to prefix all output files with <code>BMI_PGS</code>.</li>
+</ul>
+<p>There are many additional arguments you can use. You can check the <a href="https://choishingwan.github.io/PRSice/command_detail/">PRSice documentation</a> or run <code>Rscript PRSice.R --prsice PRSice_mac --help</code> for a comprehensive list, but here are a selected few (some of these are copied from the documentation):</p>
+<ul>
+<li><code>--base-maf MAF:0.01</code> Sets the column name of the MAF (minor allele frequency), and following the colon, the threshold used to QC the summary statistics. Any variants below this MAF threshold will be dropped.</li>
+<li><code>--base-info INFO:0.8</code> Sets the column name of the INFO score, and following the colon, the threshold used to QC the summary statistics. Any variants below this INFO score threshold will be dropped.</li>
+<li><code>--cov path/to/covariates.txt</code> Path to a file with covariates that should be included when constructing the polygenic score. Could be sex, age, genetic principal components, etc.</li>
+<li><code>--clump-kb</code> The distance for clumping in kb (kilo bases). For example, if –clump-kb 250 is provided, PRSice will clump any SNPs that is within 250kb to both end of the index SNP, therefore a 500kb window with the index SNP at the center. Defaults to 250kb.</li>
+<li><code>--clump-r2</code> The r2 threshold for clumping. Defaults to 0.1.</li>
+<li><code>--clump-p</code> The p-value threshold use for clumping. Defaults to 1.</li>
+<li><code>--ld</code> specifies an LD reference file to use for estimation of LD during clumping. If not provided, will use the post-filtered target genotype (which we specified using <code>--target</code> earlier on) for LD calculation. When the target sample is small (e.g. &lt; 500) and a suitable reference panel of the same population is available, an external reference panel may improve LD estimation.</li>
+</ul>
+<!--There are additional arguments to specify the parameters for the clumping procedure, you can check the complete PRSice documentation.-->
+<p>When running the above command in your terminal, PRSice will import your summary statistics and genotype data, QC and match them according to your settings, generate polygenic scores for a sequence of p-value thresholds, and finally pick the “best” polygenic score by testing the associations between each PGS and the phenotype and picking the threshold resulting in the strongest association. This may not always be what you want, so “best” is in quotation marks here. Running the above command produces the following output:</p>
+<pre class="default-output-style"><code>PRSice 2.3.5 (2021-09-20) 
+https://github.com/choishingwan/PRSice
+(C) 2016-2020 Shing Wan (Sam) Choi and Paul F. O&#39;Reilly
+GNU General Public License v3
+If you use PRSice in any published work, please cite:
+Choi SW, O&#39;Reilly PF.
+PRSice-2: Polygenic Risk Score Software for Biobank-Scale Data.
+GigaScience 8, no. 7 (July 1, 2019)
+2023-11-08 12:08:09
+./software/PRSice_mac/PRSice_mac \
+    --a1 A1 \
+    --a2 A2 \
+    --bar-levels 0.001,0.05,0.1,0.2,0.3,0.4,0.5,1 \
+    --base data/bmi_summary_statistics_prsice.txt \
+    --beta  \
+    --binary-target F \
+    --clump-kb 250kb \
+    --clump-p 1.000000 \
+    --clump-r2 0.100000 \
+    --ignore-fid  \
+    --interval 5e-05 \
+    --lower 5e-08 \
+    --num-auto 22 \
+    --out BMI_PGS \
+    --pheno data/bmi_phenotype_prsice.txt \
+    --pheno-col bmi \
+    --pvalue Pval \
+    --seed 287119957 \
+    --snp MarkerName \
+    --stat Beta \
+    --target data/genotypes_prsice \
+    --thread 1 \
+    --upper 0.5
+
+Initializing Genotype file: data/genotypes_prsice (bed) 
+
+Start processing bmi_summary_statistics_prsice 
+================================================== 
+
+Base file: data/bmi_summary_statistics_prsice.txt 
+Header of file is: 
+MarkerName A1 A2 Beta Pval 
+
+1977875 variant(s) observed in base file, with: 
+1977875 total variant(s) included from base file 
+
+Loading Genotype info from target 
+================================================== 
+
+1092 people (525 male(s), 567 female(s)) observed 
+1092 founder(s) included 
+
+127367 variant(s) not found in previous data 
+719117 variant(s) included 
+
+Phenotype file: data/bmi_phenotype_prsice.txt 
+Column Name of Sample ID: IID 
+Note: If the phenotype file does not contain a header, the 
+column name will be displayed as the Sample ID which is 
+expected. 
+
+There are a total of 1 phenotype to process 
+
+Start performing clumping 
+
+Number of variant(s) after clumping : 117471 
+
+Processing the 1 th phenotype 
+
+bmi is a continuous phenotype 
+1092 sample(s) with valid phenotype 
+
+There are 1 region(s) with p-value less than 1e-5. Please 
+note that these results are inflated due to the overfitting 
+inherent in finding the best-fit PRS (but it&#39;s still best 
+to find the best-fit PRS!). 
+You can use the --perm option (see manual) to calculate an 
+empirical P-value. </code></pre>
+<p>and the following images showing the predictive power of the score at various choices of the p-value threshold</p>
+<p><img src="BMI_PGS_BARPLOT_2023-11-06.png" width="50%" /><img src="BMI_PGS_HIGH-RES_PLOT_2023-11-06.png" width="50%" /></p>
+<p>and the following text file containing the polygenic score for the p-value threshold that results in the highest incremental <span class="math inline">\(R^2\)</span>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="in-practice.html#cb9-1" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;BMI_PGS.best&#39;</span>);</span></code></pre></div>
+<pre class="default-output-style"><code>      FID     IID In_Regression           PRS
+   1:   0 HG00096           Yes -3.847227e-05
+   2:   0 HG00097           Yes -5.954122e-05
+   3:   0 HG00099           Yes -4.882462e-05
+   4:   0 HG00100           Yes -4.868976e-05
+   5:   0 HG00101           Yes -5.733523e-05
+  ---                                        
+1088:   0 NA20816           Yes -5.015998e-05
+1089:   0 NA20818           Yes -6.880611e-05
+1090:   0 NA20819           Yes -4.084220e-05
+1091:   0 NA20826           Yes -4.938521e-05
+1092:   0 NA20828           Yes -4.435050e-05</code></pre>
+<p>Note that if you select the “best” p-value threshold in the analysis sample, you will generally overfit. You could use a separate sample split to select the p-value threshold, and then use this threshold to generate the final score in the analysis sample. We skip this here.</p>
+<p>It is also possible to tell PRSice to generate a polygenic score for a specific p-value threshold instead of searching for the “best” threshold. For example, you may have a strong piror on the threshold based on previous results or theory, or maybe you don’t have any phenotype data and as such can’t do the association testing for the “best” threshold. To set a specific p-value threshold, you can specify the <code>--bar-levels</code> and <code>--fastscore</code> arguments when calling PRSice. Say we want to generate a PGS that includes all SNPs (so the p-value threshold is 1):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb11-1"><a href="in-practice.html#cb11-1"></a><span class="ex">Rscript</span> software/PRSice_mac/PRSice.R <span class="dt">\</span></span>
+<span id="cb11-2"><a href="in-practice.html#cb11-2"></a>  <span class="at">--prsice</span> software/PRSice_mac/PRSice_mac <span class="dt">\</span></span>
+<span id="cb11-3"><a href="in-practice.html#cb11-3"></a>  <span class="at">--base</span> data/bmi_summary_statistics_prsice.txt <span class="dt">\</span></span>
+<span id="cb11-4"><a href="in-practice.html#cb11-4"></a>  <span class="at">--target</span> data/genotypes_prsice <span class="dt">\</span></span>
+<span id="cb11-5"><a href="in-practice.html#cb11-5"></a>  <span class="at">--pheno</span> data/bmi_phenotype_prsice.txt <span class="dt">\</span></span>
+<span id="cb11-6"><a href="in-practice.html#cb11-6"></a>  <span class="at">--ignore-fid</span> <span class="dt">\</span></span>
+<span id="cb11-7"><a href="in-practice.html#cb11-7"></a>  <span class="at">--pheno-col</span> bmi <span class="dt">\</span></span>
+<span id="cb11-8"><a href="in-practice.html#cb11-8"></a>  <span class="at">--binary-target</span> F <span class="dt">\</span></span>
+<span id="cb11-9"><a href="in-practice.html#cb11-9"></a>  <span class="at">--bar-levels</span> 1 <span class="dt">\</span></span>
+<span id="cb11-10"><a href="in-practice.html#cb11-10"></a>  <span class="at">--fastscore</span> <span class="dt">\</span></span>
+<span id="cb11-11"><a href="in-practice.html#cb11-11"></a>  <span class="at">--beta</span> <span class="dt">\</span></span>
+<span id="cb11-12"><a href="in-practice.html#cb11-12"></a>  <span class="at">--A1</span> A1 <span class="dt">\</span></span>
+<span id="cb11-13"><a href="in-practice.html#cb11-13"></a>  <span class="at">--A2</span> A2 <span class="dt">\</span></span>
+<span id="cb11-14"><a href="in-practice.html#cb11-14"></a>  <span class="at">--stat</span> Beta <span class="dt">\</span></span>
+<span id="cb11-15"><a href="in-practice.html#cb11-15"></a>  <span class="at">--snp</span> MarkerName <span class="dt">\</span></span>
+<span id="cb11-16"><a href="in-practice.html#cb11-16"></a>  <span class="at">--pvalue</span> Pval <span class="dt">\</span></span>
+<span id="cb11-17"><a href="in-practice.html#cb11-17"></a>  <span class="at">--out</span> BMI_PGS</span></code></pre></div>
+<p>Notice the new arguments on Lines 9-10. We won’t show the ouput here, but you can try it yourself.</p>
+<!--Rscript software/PRSice_mac/PRSice.R --prsice software/PRSice_mac/PRSice_mac --base data/bmi_summary_statistics_prsice.txt --target data/genotypes --binary-target F --pheno data/bmi_phenotype_prsice.txt --ignore-fid --pheno-col bmi --base-info info:0.8 --beta --chr chr --A1 ref --A2 alt --stat effalt --snp rs --bp pos --pvalue pval --out BMI_PGS
+
+Rscript software/PRSice_mac/PRSice.R --prsice software/PRSice_mac/PRSice_mac --base data/data_chapter10/BMI.txt --target data/data_chapter10/1kg_hm3_qc --binary-target F --pheno data/bmi_phenotype_prsice.txt --ignore-fid --pheno-col bmi --beta --A1 A1 --A2 A2 --stat Beta --snp MarkerName --pvalue Pval --extract BMI_PGS.valid --out BMI_PGS-->
+<!--- If you are in the same folder as the PRSICE executable, then do `Rscript prsice.r --args ...`. If R is not in your path, and you do not want to add it for whatever reason, then do `/path/to/r/executable/Rscript prsice.r --args ...`. This will produce the following set of files:
+
+--->
+<!--Clumping with p-value threshold. If you select the p-value threshold in the analysis sample, you will generally overfit. You could use a validation sample to select the p-value threshold, and then after you've selected a threshold use it to generate the final score in the analysis sample.-->
+</div>
+<div id="step-4-evaluate-the-score" class="section level3 unnumbered hasAnchor">
+<h3>Step 4: Evaluate the score<a href="in-practice.html#step-4-evaluate-the-score" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that we have constructed a PGS, let’s test it in our analysis sample. You can use your software of choice, but here we’ll use R. First load the polygenic score and phenotype into R:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb12-1"><a href="in-practice.html#cb12-1"></a>pgs    <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;BMI_PGS.best&#39;</span>);</span>
+<span id="cb12-2"><a href="in-practice.html#cb12-2"></a>pgs    <span class="ot">&lt;-</span> pgs[, <span class="fu">list</span>(IID, <span class="at">pgs =</span> PRS)];</span>
+<span id="cb12-3"><a href="in-practice.html#cb12-3"></a></span>
+<span id="cb12-4"><a href="in-practice.html#cb12-4"></a>pcs   <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/principal_components.txt&#39;</span>);</span>
+<span id="cb12-5"><a href="in-practice.html#cb12-5"></a><span class="fu">setnames</span>(pcs, <span class="st">&#39;individual_id&#39;</span>, <span class="st">&#39;IID&#39;</span>);</span>
+<span id="cb12-6"><a href="in-practice.html#cb12-6"></a></span>
+<span id="cb12-7"><a href="in-practice.html#cb12-7"></a>phenos <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/bmi_phenotype_prsice.txt&#39;</span>);</span>
+<span id="cb12-8"><a href="in-practice.html#cb12-8"></a></span>
+<span id="cb12-9"><a href="in-practice.html#cb12-9"></a>d      <span class="ot">&lt;-</span> phenos[pgs, on <span class="ot">=</span> <span class="fu">list</span>(IID)];</span>
+<span id="cb12-10"><a href="in-practice.html#cb12-10"></a>d      <span class="ot">&lt;-</span> d[pcs, on <span class="ot">=</span> <span class="fu">list</span>(IID)];</span></code></pre></div>
+<p>Lines 1-2 load the polygenic score from PRSice and remaps the column name of the polygenic score. Lines 4-5 import the genetic principal components and remaps the column name of the individual IDs to match with that of the PGS data. Line 7 reads the phenotype data, and finally on Lines 9-10 we merge (join…) the datasets on <code>individual_id</code>.</p>
+<p>We can have a look at the merged dataset</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="in-practice.html#cb13-1" tabindex="-1"></a>d;</span></code></pre></div>
+<pre class="default-output-style"><code>          IID      bmi           pgs       pc1        pc2       pc3          pc4          pc5          pc6          pc7          pc8          pc9         pc10
+   1: HG00096 25.02283 -3.847227e-05 0.0149253 -0.0329941 0.0157409  0.001711990  0.001789660 -0.007046590 -0.004616850 -0.007353750 -0.001695640  0.010025300
+   2: HG00097 24.85364 -5.954122e-05 0.0146554 -0.0330726 0.0168457 -0.000707850 -0.000456348 -0.008600460 -0.006101650 -0.002933910  0.001896050  0.003501450
+   3: HG00099 23.68929 -4.882462e-05 0.0147324 -0.0333974 0.0160621  0.002431070  0.000503637 -0.001959320 -0.001306260 -0.003846570  0.002051590 -0.000813858
+   4: HG00100 27.01620 -4.868976e-05 0.0146498 -0.0329754 0.0158382 -0.002757970  0.002022980  0.002282410 -0.000977904 -0.001512480  0.002441920  0.007117570
+   5: HG00101 21.46162 -5.733523e-05 0.0145233 -0.0328001 0.0164791  0.000286727 -0.001215870 -0.002031530 -0.000880223 -0.006986680  0.005061240  0.010133300
+  ---                                                                                                                                                         
+1088: NA20816 23.42486 -5.015998e-05 0.0123625 -0.0315886 0.0168734 -0.050645400  0.005178990  0.000868346  0.003185740 -0.001519410 -0.007032560  0.001529210
+1089: NA20818 19.88306 -6.880611e-05 0.0129391 -0.0316833 0.0159664 -0.050710600  0.001097800  0.005481870 -0.004399510  0.003518680  0.001006330  0.009418120
+1090: NA20819 25.00421 -4.084220e-05 0.0129315 -0.0300569 0.0150815 -0.043687800 -0.001958790  0.005927480  0.000679378  0.000102744  0.004599080  0.003466100
+1091: NA20826 23.36876 -4.938521e-05 0.0131451 -0.0322081 0.0165051 -0.049448900 -0.005022560 -0.001607400  0.002826350  0.001631950 -0.000103377  0.000611551
+1092: NA20828 28.16467 -4.435050e-05 0.0119424 -0.0316353 0.0165979 -0.052374500 -0.000520645  0.009377760  0.003230950  0.009716170  0.005069250  0.004594450</code></pre>
+<p>and the distribution of the standardised score (notice that we use the R function <code>scale</code> to standardise the polygenic score):</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb15-1"><a href="in-practice.html#cb15-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(pgs)[,])) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="in-practice.html#cb15-2"></a>  <span class="fu">geom_histogram</span>();</span>
+<span id="cb15-3"><a href="in-practice.html#cb15-3"></a>p;</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>and we can also plot the PGS against the phenotype, like so:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb17-1"><a href="in-practice.html#cb17-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(d, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">scale</span>(pgs)[,], <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="in-practice.html#cb17-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="in-practice.html#cb17-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;loess&#39;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="in-practice.html#cb17-4"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Polygenic score&#39;</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="in-practice.html#cb17-5"></a>  <span class="fu">ylab</span>(<span class="st">&#39;BMI&#39;</span>);</span>
+<span id="cb17-6"><a href="in-practice.html#cb17-6"></a>p;</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>We are now set to check the explanatory power of our PGS. First let’s see if the PGS actually predicts BMI and whether this association has the expected sign. We can do a simple linear regression of BMI on PGS as follows:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="in-practice.html#cb18-1" tabindex="-1"></a>fixest<span class="sc">::</span><span class="fu">feols</span>(bmi <span class="sc">~</span> <span class="fu">scale</span>(pgs)[,], <span class="at">data =</span> d) <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="in-practice.html#cb18-2" tabindex="-1"></a>  <span class="fu">summary</span>();</span></code></pre></div>
+<pre class="default-output-style"><code>OLS estimation, Dep. Var.: bmi
+Observations: 1,092 
+Standard-errors: IID 
+               Estimate Std. Error  t value  Pr(&gt;|t|)    
+(Intercept)    25.00000   0.084103 297.2536 &lt; 2.2e-16 ***
+scale(pgs)[, ]  1.13268   0.084142  13.4616 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 2.77668   Adj. R2: 0.141766</code></pre>
+<p>Notice again that we standardise the PGS to zero mean and unit variance by calling <code>scale</code>. The square brackets <code>[,]</code> are an R oddity, and they force R to strip attributes from the return value of the <code>scale</code> function. An advantage of doing the standardisation inside the model call (that is, inside the call to <code>fixest::feols</code>) is that the PGS will always be standardised in whatever subsample we may supply to the function without us having to repeat the standardisation procedure for each subsample. It also means that if individuals are dropped due to missing covariates or outcomes (say you run regressions for multiple outcomes, some of which have missing values), the PGS will still be correctly standardised.</p>
+<p>Looking at the regression results, we see that the sign on the PGS is positive, so we got the effect allele right! A one standard deviation increase in the polygenic score is associated with a 1.13 point increase in BMI. Although, keep in mind that we have not controlled for the genetic principal components, so a substantial part of this association may be population stratification.</p>
+<p>An often used metric to evaluate the predictive power of a polygenic score is the incremental <span class="math inline">\(R^2\)</span>. The incremental <span class="math inline">\(R^2\)</span> is the increase in <span class="math inline">\(R^2\)</span> from a restricted model (where we drop the polygenic score) to an unrestricted model (where we include the polygenic score). Say we have the restricted model
+<span class="math display">\[y_i = \alpha + \theta \mathbf{x}_i + \epsilon_i.\]</span>
+yielding an <span class="math inline">\(R^2_{res}\)</span>, and an unrestricted model
+<span class="math display">\[y_i = \alpha + \beta PGS_i + \theta \mathbf{x}_i + \epsilon_i\]</span>
+giving us <span class="math inline">\(R^2_{unres}\)</span>. The incremental <span class="math inline">\(R^2\)</span> is then <span class="math inline">\(R_{inc}^2 = R_{unres}^2 - R_{res}^2\)</span>. The additional covariates <span class="math inline">\(\mathbf{x}_i\)</span> would usually contain the genetic principal components and baseline characteristics such as sex, age, etc., as in a GWAS.</p>
+<p>To calculate the incremental <span class="math inline">\(R^2\)</span> for our BMI PGS, we could thus do the following:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb20-1"><a href="in-practice.html#cb20-1"></a>m_formula <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;bmi ~ {paste0(&quot;pc&quot;, 1:10, collapse=&quot;+&quot;)}&#39;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="in-practice.html#cb20-2"></a>  <span class="fu">formula</span>();</span>
+<span id="cb20-3"><a href="in-practice.html#cb20-3"></a></span>
+<span id="cb20-4"><a href="in-practice.html#cb20-4"></a>m_res   <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> d);</span>
+<span id="cb20-5"><a href="in-practice.html#cb20-5"></a>m_unres <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> <span class="fu">update</span>(. <span class="sc">~</span> . <span class="sc">+</span> pgs) <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> d);</span>
+<span id="cb20-6"><a href="in-practice.html#cb20-6"></a></span>
+<span id="cb20-7"><a href="in-practice.html#cb20-7"></a>r2_incremental <span class="ot">&lt;-</span> (</span>
+<span id="cb20-8"><a href="in-practice.html#cb20-8"></a>  fixest<span class="sc">::</span><span class="fu">r2</span>(m_unres, <span class="at">type =</span> <span class="st">&#39;r2&#39;</span>) <span class="sc">-</span> fixest<span class="sc">::</span><span class="fu">r2</span>(m_res, <span class="at">type =</span> <span class="st">&#39;r2&#39;</span>)</span>
+<span id="cb20-9"><a href="in-practice.html#cb20-9"></a>);</span>
+<span id="cb20-10"><a href="in-practice.html#cb20-10"></a></span>
+<span id="cb20-11"><a href="in-practice.html#cb20-11"></a><span class="fu">print</span>(r2_incremental);</span></code></pre></div>
+<pre class="default-output-style"><code>        r2 
+0.08902772 </code></pre>
+<p>Lines 1-2 set up a formula with the phenotype as the dependent variable and the principal components as explanatory variables. Note that parse the string into a formula object using the <code>formula</code> function. Lines 4-5 first fit the restricted model (excluding the PGS) and then the unrestricted model (including the PGS). Finally, in Lines 7-9 we calculate the difference in <span class="math inline">\(R^2\)</span>, and in Line 11 print the output to the terminal.</p>
+<p>We get an incremental <span class="math inline">\(R^2\)</span> of 0.089, telling us that the additional proportion of the variance explained by the PGS is approximately 9%.</p>
+<p>If we want a standard error for our incremental <span class="math inline">\(R^2\)</span>, we can bootstrap it, as described in (Mills et al., 2020):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb22-1"><a href="in-practice.html#cb22-1"></a><span class="fu">library</span>(boot);</span>
+<span id="cb22-2"><a href="in-practice.html#cb22-2"></a></span>
+<span id="cb22-3"><a href="in-practice.html#cb22-3"></a>m_formula <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;bmi ~ {paste0(&quot;pc&quot;, 1:10, collapse=&quot;+&quot;)}&#39;</span>) <span class="sc">|&gt;</span> <span class="fu">formula</span>();</span>
+<span id="cb22-4"><a href="in-practice.html#cb22-4"></a></span>
+<span id="cb22-5"><a href="in-practice.html#cb22-5"></a>confidence_interval <span class="ot">&lt;-</span> boot<span class="sc">::</span><span class="fu">boot</span>(</span>
+<span id="cb22-6"><a href="in-practice.html#cb22-6"></a>  <span class="at">data      =</span> <span class="fu">as.data.frame</span>(d),</span>
+<span id="cb22-7"><a href="in-practice.html#cb22-7"></a>  <span class="at">R         =</span> <span class="dv">1000</span>,</span>
+<span id="cb22-8"><a href="in-practice.html#cb22-8"></a>  <span class="at">statistic =</span> <span class="cf">function</span>(dorig, indices, ...) {</span>
+<span id="cb22-9"><a href="in-practice.html#cb22-9"></a>    d <span class="ot">&lt;-</span> dorig[indices, ];</span>
+<span id="cb22-10"><a href="in-practice.html#cb22-10"></a>    m_unres <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> <span class="fu">update</span>(. <span class="sc">~</span> . <span class="sc">+</span> pgs) <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> d);</span>
+<span id="cb22-11"><a href="in-practice.html#cb22-11"></a>    m_res   <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> d);</span>
+<span id="cb22-12"><a href="in-practice.html#cb22-12"></a>    <span class="fu">return</span>(</span>
+<span id="cb22-13"><a href="in-practice.html#cb22-13"></a>      fixest<span class="sc">::</span><span class="fu">r2</span>(m_unres, <span class="at">type =</span> <span class="st">&#39;r2&#39;</span>) <span class="sc">-</span> fixest<span class="sc">::</span><span class="fu">r2</span>(m_res, <span class="at">type =</span> <span class="st">&#39;r2&#39;</span>)</span>
+<span id="cb22-14"><a href="in-practice.html#cb22-14"></a>    );</span>
+<span id="cb22-15"><a href="in-practice.html#cb22-15"></a>  }</span>
+<span id="cb22-16"><a href="in-practice.html#cb22-16"></a>) <span class="sc">|&gt;</span> boot<span class="sc">::</span><span class="fu">boot.ci</span>(<span class="at">type =</span> <span class="st">&#39;norm&#39;</span>);</span></code></pre></div>
+<p>Let’s break this down. Line 1 first loads the <code>boot</code> package that has some useful helper functions. Line 3 sets up the formula for our linear model. Lines 5-13 call <code>boot::boot</code> with the relevant arguments: Lines 5 and 6 sets the arguments for the data to resample, and the number of replications. Lines 8-11 define the function that should be called on each bootstrap dataset to calculate the relevant statistics, in our case the incremental <span class="math inline">\(R^2\)</span>. The function should take the original dataset as its first argument, a set of resampled row indices as its second argument, and return the value of the statistic when evaluated on this dataset. Line 13 pipes the output into <code>boot::boot.ci</code> to calculate a bootstrap confidence interval, in this case using a normal approximation.</p>
+<p>If we print <code>confidence_interval</code>, we get the following information:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="in-practice.html#cb23-1" tabindex="-1"></a><span class="fu">print</span>(confidence_interval);</span></code></pre></div>
+<pre class="default-output-style"><code>BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+Based on 1000 bootstrap replicates
+
+CALL : 
+boot::boot.ci(boot.out = boot::boot(data = as.data.frame(d), 
+    R = 1000, statistic = function(dorig, indices, ...) {
+        d &lt;- dorig[indices, ]
+        m_unres &lt;- fixest::feols(update(m_formula, . ~ . + pgs), 
+            data = d)
+        m_res &lt;- fixest::feols(m_formula, data = d)
+        return(fixest::r2(m_unres, type = &quot;r2&quot;) - fixest::r2(m_res, 
+            type = &quot;r2&quot;))
+    }), type = &quot;norm&quot;)
+
+Intervals : 
+Level      Normal        
+95%   ( 0.0584,  0.1186 )  
+Calculations and Intervals on Original Scale</code></pre>
+<p>telling us that the (normal approx.) bootstrapped 0.95 CI for the incremental <span class="math inline">\(R^2\)</span> is [0.058, 0.119].</p>
+</div>
+</div>
+<div id="working-with-bigsnpr-and-ldpred" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Working with bigsnpr and LDpred<a href="in-practice.html#working-with-bigsnpr-and-ldpred" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For the next polygenic score, we will use R and the R-package called <code>bigsnpr</code>, which implements LDpred and other PGS methods. The original version of LDpred was written in Python, and it was quite slow and difficult to customise. The implementation in <code>bigsnpr</code> offers more flexibility, but also requires slightly more work to set up, as you will see.</p>
+<p>We will go through the steps to generate an LDpred polygenic score, but keep in mind that if you want to run this on an HPC system, you’ll probably want to structure this differently depending on the characteristics of the system. You may also want to automate how you submit jobs to the system. Ask me about this, I’m happy to discuss and share code.</p>
+<p>Reasons for using bigsnpr over the old python LDPred:</p>
+<ul>
+<li>You get to write everything in R! You don’t need to write shell code, which can be error prone, platform dependent, and hard to maintain.</li>
+<li>It’s faster than the Python implementation as the performance sensitive parts are written in C++ with R mainly relegated to calling C++ functions on the backend.</li>
+<li><code>bigsnpr</code> can do unadjusted scores, pruning/clumping/thresholding scores, LDpred scores (Inf/Grid/Auto), and LASSOSUM scores, so you don’t need to switch between tools (or learn multiple tools!) to use the different polygenic score methods.</li>
+</ul>
+<p>There’s seven main steps to create an LDpred polygenic score using <code>bigsnpr</code>:</p>
+<ol style="list-style-type: decimal">
+<li>Prepare the genotypes of the individuals for which you want to construct a polygenic score. We also need to convert the genotypes into an intermediate format that can be read from R.</li>
+<li>Prepare the summary statistics for the phenotype for which you want to construct a polygenic score. This is largely similar to what we did for PRSice.</li>
+<li>Match the summary statistics to the genotypes.</li>
+<li>Create or load an LD matrix containing the pairwise SNP correlations.</li>
+<li>Calculate adjusted effect sizes using the summary statistics and the LD information.</li>
+<li>Calculate the polygenic score for the individuals in the analysis sample.</li>
+<li>Evaluate the predictive power of your score.</li>
+</ol>
+<div id="step-1-prepare-genotypes-1" class="section level3 unnumbered hasAnchor">
+<h3>Step 1: Prepare genotypes<a href="in-practice.html#step-1-prepare-genotypes-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-1.1-qc" class="section level4 unnumbered hasAnchor">
+<h4>Step 1.1: QC<a href="in-practice.html#step-1.1-qc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As in the previous section on PRSice, we assume that you have QC’ed your genotypes for the analysis sample, and that they are stored in PLINK format in <code>genotypes.bed</code>, <code>genotypes.fam</code>, and <code>genotypes.bim</code>.</p>
+</div>
+<div id="step-1.2-convert-to-bigsnpr-format" class="section level4 unnumbered hasAnchor">
+<h4>Step 1.2: Convert to bigsnpr format<a href="in-practice.html#step-1.2-convert-to-bigsnpr-format" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>bigsnpr</code> requires us to convert the genotype dataset into an intermediate format that structured more optimally for the operations we need to do. <code>bigsnpr</code> has several functions for this depending on the file format of your genotype data. Here we will again focus on the PLINK format, but BGEN is almost as easy.</p>
+<p>Let’s do the conversion using the following R code:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb25-1"><a href="in-practice.html#cb25-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&#39;data/genotypes.rds&#39;</span>)) {</span>
+<span id="cb25-2"><a href="in-practice.html#cb25-2"></a>  bigsnpr<span class="sc">::</span><span class="fu">snp_readBed</span>(<span class="st">&#39;data/genotypes.bed&#39;</span>);</span>
+<span id="cb25-3"><a href="in-practice.html#cb25-3"></a>}</span>
+<span id="cb25-4"><a href="in-practice.html#cb25-4"></a></span>
+<span id="cb25-5"><a href="in-practice.html#cb25-5"></a>genotypes <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_attach</span>(<span class="st">&#39;data/genotypes.rds&#39;</span>);</span></code></pre></div>
+<p>Line 1 checks if we already converted the genotypes into the intermediate format, if not, then Line 2 loads up the .bed file and converts it into the intermediate format. The intermeidate format consists of a meta file (stored in R’s binary format <code>.rds</code>) and a backing file <code>.bk</code> containing the actual genotypes. Finally, Line 5 loads up the intermediate genotype file so we can access it from R.</p>
+<p>Let’s see what’s inside this <code>genotypes</code> object:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="in-practice.html#cb26-1" tabindex="-1"></a><span class="fu">str</span>(genotypes);</span></code></pre></div>
+<pre class="default-output-style"><code>List of 3
+ $ genotypes:Reference class &#39;FBM.code256&#39; [package &quot;bigstatsr&quot;] with 16 fields
+  ..$ extptr      :&lt;externalptr&gt; 
+  ..$ extptr_rw   :&lt;externalptr&gt; 
+  ..$ nrow        : int 379
+  ..$ ncol        : int 851065
+  ..$ type        : Named int 1
+  .. ..- attr(*, &quot;names&quot;)= chr &quot;unsigned char&quot;
+  ..$ backingfile : chr &quot;/Users/uz18143/Desktop/Apps/pgs-teaching/data/genotypes.bk&quot;
+  ..$ is_read_only: logi FALSE
+  ..$ address     :&lt;externalptr&gt; 
+  ..$ address_rw  :&lt;externalptr&gt; 
+  ..$ bk          : chr &quot;/Users/uz18143/Desktop/Apps/pgs-teaching/data/genotypes.bk&quot;
+  ..$ rds         : chr &quot;/Users/uz18143/Desktop/Apps/pgs-teaching/data/genotypes.rds&quot;
+  ..$ is_saved    : logi TRUE
+  ..$ type_chr    : chr &quot;unsigned char&quot;
+  ..$ type_size   : int 1
+  ..$ file_size   : num 3.23e+08
+  ..$ code256     : num [1:256] 0 1 2 NA NA NA NA NA NA NA ...
+  ..and 26 methods, of which 12 are  possibly relevant:
+  ..  add_columns, as.FBM, bm, bm.desc, check_dimensions, check_write_permissions, copy#envRefClass, initialize, initialize#FBM, save, show#envRefClass, show#FBM
+ $ fam      :&#39;data.frame&#39;:  379 obs. of  6 variables:
+  ..$ family.ID  : int [1:379] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ sample.ID  : chr [1:379] &quot;HG00096&quot; &quot;HG00097&quot; &quot;HG00099&quot; &quot;HG00100&quot; ...
+  ..$ paternal.ID: int [1:379] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ maternal.ID: int [1:379] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ sex        : int [1:379] 1 2 2 2 1 2 1 2 2 1 ...
+  ..$ affection  : int [1:379] -9 -9 -9 -9 -9 -9 -9 -9 -9 -9 ...
+ $ map      :&#39;data.frame&#39;:  851065 obs. of  6 variables:
+  ..$ chromosome  : int [1:851065] 1 1 1 1 1 1 1 1 1 1 ...
+  ..$ marker.ID   : chr [1:851065] &quot;rs1048488&quot; &quot;rs3115850&quot; &quot;rs2519031&quot; &quot;rs4970383&quot; ...
+  ..$ genetic.dist: int [1:851065] 0 0 0 0 0 0 0 0 0 0 ...
+  ..$ physical.pos: int [1:851065] 760912 761147 793947 838555 846808 853954 854250 870645 879317 880238 ...
+  ..$ allele1     : chr [1:851065] &quot;C&quot; &quot;T&quot; &quot;G&quot; &quot;A&quot; ...
+  ..$ allele2     : chr [1:851065] &quot;T&quot; &quot;C&quot; &quot;A&quot; &quot;C&quot; ...
+ - attr(*, &quot;class&quot;)= chr &quot;bigSNP&quot;</code></pre>
+<p>It looks complicated, but really it’s just a list (an R type, similar to a hash map really) that holds three pieces of information: The first element <code>genotypes$genotypes</code> holds the actual genotype information (or actually a pointer to somewhere “outside” R that allows us to access the genotypes, meaning that we do not copy the genotypes even if we copy the genotypes object…). The second element <code>genotypes$fam</code> holds information on the individuals, and the third element <code>genotypes$map</code> holds information on the SNPs. This is very similar to the contents of the fam, bim, and bed files in the PLINK format.</p>
+<div class="tip">
+<p><strong>Tip</strong>: As you will see later, in most cases we will only work with a subset of SNPs from Hapmap3. If you have a large genotype dataset (such as from the UK Biobank), it can save disk space (and speed up certain computations) to only read the Hapmap3 SNPs into the intermediate genotype file. To do this, we can download a list of the Hapmap3 SNPs and then pick these SNPs from the genotype files using the snplist argument in the <code>snp_readBgen</code> and <code>snp_readBed2</code> functions.</p>
+</div>
+</div>
+</div>
+<div id="step-2-prepare-summary-statistics-1" class="section level3 unnumbered hasAnchor">
+<h3>Step 2: Prepare summary statistics<a href="in-practice.html#step-2-prepare-summary-statistics-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can proceed more or less as we did for PRSice. Here we will go through it again with some variations.</p>
+<p>As we saw earlier, working with summary statistics in R is no different from any other dataset as they are just stored in a plain text file with one variant per row, and fields separated by a delimiter. Let’s load the BMI summary statistics in <code>data/bmi_summary_statistics_final.txt</code> into R and have a look</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="in-practice.html#cb28-1" tabindex="-1"></a>summary_statistics <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/bmi_summary_statistics_final.txt&#39;</span>);</span>
+<span id="cb28-2"><a href="in-practice.html#cb28-2" tabindex="-1"></a>summary_statistics;</span></code></pre></div>
+<pre class="default-output-style"><code>        chr       pos ref alt  reffrq info         rs   pval  effalt     beta_se
+     1:  12 126890980   A   G 0.24010    1  rs1000000 0.9600 -0.0001 0.001993874
+     2:   4  21618674   C   T 0.49340    1 rs10000010 0.9400  0.0001 0.001328553
+     3:   3 183635768   T   C 0.47630    1  rs1000002 0.0013  0.0055 0.001710210
+     4:   4  95733906   G   T 0.38520    1 rs10000023 0.0072  0.0047 0.001748870
+     5:   3  98342907   G   A 0.17940    1  rs1000003 0.2300 -0.0029 0.002415944
+    ---                                                                         
+712099:  10  78735498   T   C 0.49210    1   rs999995 0.0410  0.0036 0.001761657
+712100:   4  41782996   A   G 0.08311    1  rs9999953 0.5900  0.0017 0.003154948
+712101:   4  84072737   C   T 0.03430    1  rs9999963 0.0840  0.0079 0.004571933
+712102:   4   5927355   T   C 0.10550    1  rs9999966 0.8100  0.0007 0.002911498
+712103:   4 135733891   T   C 0.39970    1  rs9999979 0.4900 -0.0012 0.001738353</code></pre>
+<!--- this was to add the standard error as it was missing (-.-) --->
+<!---```{r eval=FALSE}
+# summary_statistics[, beta_se := abs(effalt) / qnorm(1 - (pval / 2))]
+# fwrite(summary_statistics, 'data/bmi_summary_statistics_final.txt');
+```
+
+````r
+# summary_statistics <- summary_statistics[!is.na(beta_se)];
+# summary_statistics <- summary_statistics[!(effalt==0&beta_se==0)];
+# summary_statistics[beta_se == 0, beta_se := .Machine$double.eps];
+# summary_statistics[beta_se <= .Machine$double.eps, beta_se := 0.002];
+# summary_statistics[beta_se == 0.002];
+# summary_statistics[beta_se <= 0.000001];
+# fwrite(summary_statistics, 'data/bmi_summary_statistics_final.txt');
+```--->
+<p>These summary statistics have already been cleaned up somewhat, but in practice we should make sure that only chromosome 1-22 are in the summary statistics (unless you specifically want the sex chromosomes!), that non-SNP variants have been removed, and that we drop SNPs with a low MAF or INFO score (if these columns are in the summary statistics, they may not be!). Let’s do that in R:
+````</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="in-practice.html#cb30-1" tabindex="-1"></a>summary_statistics <span class="ot">&lt;-</span> summary_statistics[</span>
+<span id="cb30-2"><a href="in-practice.html#cb30-2" tabindex="-1"></a>  <span class="fu">nchar</span>(ref) <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb30-3"><a href="in-practice.html#cb30-3" tabindex="-1"></a>  <span class="fu">nchar</span>(alt) <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb30-4"><a href="in-practice.html#cb30-4" tabindex="-1"></a>  info <span class="sc">&gt;</span> <span class="fl">0.8</span> <span class="sc">&amp;</span></span>
+<span id="cb30-5"><a href="in-practice.html#cb30-5" tabindex="-1"></a>  chr <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">22</span></span>
+<span id="cb30-6"><a href="in-practice.html#cb30-6" tabindex="-1"></a>];</span></code></pre></div>
+<!--These summary statistics do not contain the effective sample size, but in this case we can assume it's 500,000 individuals. We set this as a separate column on the dataset, so it's available for LDpred later on:
+
+
+```r
+summary_statistics[, n := 500000];
+```
+-->
+<p><code>bigsnpr</code> will automatically deal with strand flips and get rid of ambiguous SNPs later when we match the summary statistics to the genotype data using <code>bigsnpr::snp_match</code>, so we don’t need to worry about it here.</p>
+<p>Once thing we didn’t discuss in the PRSice example is that it’s usually also a good idea to check if the genome builds used in the summary statistics and the genotype data are the same. If they are not, then we can convert them using a tool like <code>liftover</code>, check the documentation for <code>bigsnpr::snp_modifyBuild</code>. As our data have been handpicked for the tutorial, we know that they are in the correct build, so we will skip this step.</p>
+<!--- TODO: add the following
+
+Another procedure that can further improve the precision of the PGS, is to compare the allele frequencies in the summary statistic against the genotypes in our analysis sample. See also XXXX. We can go about this as follows.
+
+--->
+<p>For LDPred, it’s usually recommended to filter the SNPs down to hapmap3 SNPs (about 1.1 million SNPs). To do this, we first download a list of all the Hapmap3 SNPs:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="in-practice.html#cb31-1" tabindex="-1"></a>download_hapmap3_if_needed <span class="ot">&lt;-</span> <span class="cf">function</span>(destination_path) {</span>
+<span id="cb31-2"><a href="in-practice.html#cb31-2" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(destination_path)) <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>));</span>
+<span id="cb31-3"><a href="in-practice.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="in-practice.html#cb31-4" tabindex="-1"></a>  <span class="co"># This file is courtesy of Florian Prive.</span></span>
+<span id="cb31-5"><a href="in-practice.html#cb31-5" tabindex="-1"></a>  utils<span class="sc">::</span><span class="fu">download.file</span>(</span>
+<span id="cb31-6"><a href="in-practice.html#cb31-6" tabindex="-1"></a>    <span class="st">&#39;https://figshare.com/ndownloader/files/36360900&#39;</span>,</span>
+<span id="cb31-7"><a href="in-practice.html#cb31-7" tabindex="-1"></a>    <span class="at">destfile =</span> destination_path,</span>
+<span id="cb31-8"><a href="in-practice.html#cb31-8" tabindex="-1"></a>    <span class="at">quiet    =</span> <span class="cn">TRUE</span></span>
+<span id="cb31-9"><a href="in-practice.html#cb31-9" tabindex="-1"></a>  );</span>
+<span id="cb31-10"><a href="in-practice.html#cb31-10" tabindex="-1"></a>}</span>
+<span id="cb31-11"><a href="in-practice.html#cb31-11" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="in-practice.html#cb31-12" tabindex="-1"></a><span class="fu">download_hapmap3_if_needed</span>(<span class="st">&#39;data/hapmap3.rds&#39;</span>);</span></code></pre></div>
+<p>Let’s have a look at the file we just downloaded:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="in-practice.html#cb32-1" tabindex="-1"></a>hapmap3 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/hapmap3.rds&#39;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="in-practice.html#cb32-2" tabindex="-1"></a>  <span class="fu">as.data.table</span>();</span>
+<span id="cb32-3"><a href="in-practice.html#cb32-3" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="in-practice.html#cb32-4" tabindex="-1"></a>hapmap3;</span></code></pre></div>
+<pre class="default-output-style"><code>         chr      pos a0 a1       rsid    af_UKBB       ld pos_hg17 pos_hg18 pos_hg38 group_id
+      1:   1   752721  A  G  rs3131972 0.84062431 3.687146   792584   742584   817341        1
+      2:   1   754182  A  G  rs3131969 0.87037270 3.728623   794045   744045   818802        1
+      3:   1   760912  C  T  rs1048488 0.84015895 3.688378   800775   750775   825532        1
+      4:   1   768448  G  A rs12562034 0.10600436 1.400241   808311   758311   833068        1
+      5:   1   779322  A  G  rs4040617 0.12795871 3.680956   819185   769185   843942        1
+     ---                                                                                      
+1054326:  22 51178090  G  A  rs2285395 0.05416439 4.046707 49468234 49524956 50739662      625
+1054327:  22 51181759  A  G rs13056621 0.85861655 2.958548 49471903 49528625 50743331      625
+1054328:  22 51211392  T  C  rs3888396 0.13248863 1.965842 49501536 49558258 50772964      625
+1054329:  22 51212875  A  C  rs2238837 0.33223759 4.009337 49503019 49559741 50774447      625
+1054330:  22 51219006  G  A rs28729663 0.13767295 3.182173 49509150 49565872 50780578      625</code></pre>
+<p>We can now filter our summary statistics against the SNPs in Hapmap3 dataset:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="in-practice.html#cb34-1" tabindex="-1"></a>summary_statistics <span class="ot">&lt;-</span> summary_statistics[rs <span class="sc">%in%</span> hapmap3<span class="sc">$</span>rsid];</span>
+<span id="cb34-2"><a href="in-practice.html#cb34-2" tabindex="-1"></a><span class="fu">nrow</span>(summary_statistics);</span></code></pre></div>
+<pre class="default-output-style"><code>[1] 642585</code></pre>
+<p>This leaves us with 642585 SNPs that are both in our summary statistics and in Hapmap3.</p>
+<p>The final step is to set up the columns as expected by LDpred. We want the columns “chr”, “rsid”, “pos”, “a0”, “a1”, “beta”, and “beta_se”:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="in-practice.html#cb36-1" tabindex="-1"></a>summary_statistics <span class="ot">&lt;-</span> summary_statistics[, <span class="fu">list</span>(</span>
+<span id="cb36-2"><a href="in-practice.html#cb36-2" tabindex="-1"></a>  <span class="at">chr  =</span> chr,</span>
+<span id="cb36-3"><a href="in-practice.html#cb36-3" tabindex="-1"></a>  <span class="at">rsid =</span> rs,</span>
+<span id="cb36-4"><a href="in-practice.html#cb36-4" tabindex="-1"></a>  pos,</span>
+<span id="cb36-5"><a href="in-practice.html#cb36-5" tabindex="-1"></a>  <span class="at">a0   =</span> ref,</span>
+<span id="cb36-6"><a href="in-practice.html#cb36-6" tabindex="-1"></a>  <span class="at">a1   =</span> alt,</span>
+<span id="cb36-7"><a href="in-practice.html#cb36-7" tabindex="-1"></a>  <span class="at">beta =</span> effalt,</span>
+<span id="cb36-8"><a href="in-practice.html#cb36-8" tabindex="-1"></a>  beta_se</span>
+<span id="cb36-9"><a href="in-practice.html#cb36-9" tabindex="-1"></a>)][<span class="fu">order</span>(chr, pos)];</span>
+<span id="cb36-10"><a href="in-practice.html#cb36-10" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="in-practice.html#cb36-11" tabindex="-1"></a>summary_statistics;</span></code></pre></div>
+<pre class="default-output-style"><code>        chr       rsid      pos a0 a1    beta     beta_se
+     1:   1  rs3934834  1005806  T  C -0.0041 0.002492623
+     2:   1  rs3766191  1017587  T  C -0.0058 0.002587665
+     3:   1  rs9442372  1018704  A  G  0.0005 0.001710133
+     4:   1 rs10907177  1021346  G  A  0.0059 0.002576005
+     5:   1  rs3737728  1021415  A  G  0.0043 0.001956959
+    ---                                                  
+642581:  22   rs715586 51163138  T  C -0.0028 0.002383005
+642582:  22  rs8137951 51165664  A  G -0.0026 0.001806143
+642583:  22  rs2301584 51171497  A  G -0.0001 0.003989009
+642584:  22  rs3810648 51175626  G  A -0.0040 0.003626268
+642585:  22  rs2285395 51178090  A  G  0.0029 0.003674646</code></pre>
+<p>Lines 1-8 remap the columns of the summary statistics, while Line 9 orders the SNPs by chromosome and position for convenience.</p>
+<!--
+# a0   = ref, # TODO: emns(06/11/23) flip ref and alt here, so the sign of the PGS matches later on
+# a1   = alt,
+-->
+<p>That’s it! The summary statistics are good to go.</p>
+<!--Set up the correct columns and column names in the summary statistics.
+Set sample size as a column on the summary statistics.
+Remove non-SNP variants.
+Remove sex-chromosomes.-->
+</div>
+<div id="step-3-match-summary-statistics-to-genotypes" class="section level3 unnumbered hasAnchor">
+<h3>Step 3: Match summary statistics to genotypes<a href="in-practice.html#step-3-match-summary-statistics-to-genotypes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The next step is to match the SNPs in our summary statistics to those in the genotypes. To do this automatically, we can use the function <code>bigsnpr::snp_match</code>, like so:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb38-1"><a href="in-practice.html#cb38-1"></a>get_genotype_info_for_matching <span class="ot">&lt;-</span> <span class="cf">function</span>(genotypes) {</span>
+<span id="cb38-2"><a href="in-practice.html#cb38-2"></a>  info <span class="ot">&lt;-</span> genotypes<span class="sc">$</span>map[, <span class="fu">c</span>(</span>
+<span id="cb38-3"><a href="in-practice.html#cb38-3"></a>    <span class="st">&#39;chromosome&#39;</span>, <span class="st">&#39;physical.pos&#39;</span>, <span class="st">&#39;allele1&#39;</span>, <span class="st">&#39;allele2&#39;</span></span>
+<span id="cb38-4"><a href="in-practice.html#cb38-4"></a>  )];</span>
+<span id="cb38-5"><a href="in-practice.html#cb38-5"></a></span>
+<span id="cb38-6"><a href="in-practice.html#cb38-6"></a>  <span class="fu">names</span>(info) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;chr&#39;</span>, <span class="st">&#39;pos&#39;</span>, <span class="st">&#39;a0&#39;</span>, <span class="st">&#39;a1&#39;</span>);</span>
+<span id="cb38-7"><a href="in-practice.html#cb38-7"></a></span>
+<span id="cb38-8"><a href="in-practice.html#cb38-8"></a>  info<span class="sc">$</span>chr <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(info<span class="sc">$</span>chr);</span>
+<span id="cb38-9"><a href="in-practice.html#cb38-9"></a>  info<span class="sc">$</span>pos <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(info<span class="sc">$</span>pos);</span>
+<span id="cb38-10"><a href="in-practice.html#cb38-10"></a>  info<span class="sc">$</span>a0  <span class="ot">&lt;-</span> <span class="fu">as.character</span>(info<span class="sc">$</span>a0);</span>
+<span id="cb38-11"><a href="in-practice.html#cb38-11"></a>  info<span class="sc">$</span>a1  <span class="ot">&lt;-</span> <span class="fu">as.character</span>(info<span class="sc">$</span>a1);</span>
+<span id="cb38-12"><a href="in-practice.html#cb38-12"></a></span>
+<span id="cb38-13"><a href="in-practice.html#cb38-13"></a>  info;</span>
+<span id="cb38-14"><a href="in-practice.html#cb38-14"></a>}</span>
+<span id="cb38-15"><a href="in-practice.html#cb38-15"></a></span>
+<span id="cb38-16"><a href="in-practice.html#cb38-16"></a>genotypes     <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_attach</span>(<span class="st">&#39;data/genotypes.rds&#39;</span>);</span>
+<span id="cb38-17"><a href="in-practice.html#cb38-17"></a>genotype_info <span class="ot">&lt;-</span> <span class="fu">get_genotype_info_for_matching</span>(genotypes);</span>
+<span id="cb38-18"><a href="in-practice.html#cb38-18"></a></span>
+<span id="cb38-19"><a href="in-practice.html#cb38-19"></a>matched_summary_statistics <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_match</span>(</span>
+<span id="cb38-20"><a href="in-practice.html#cb38-20"></a>  summary_statistics,</span>
+<span id="cb38-21"><a href="in-practice.html#cb38-21"></a>  genotype_info</span>
+<span id="cb38-22"><a href="in-practice.html#cb38-22"></a>);</span></code></pre></div>
+<pre><code>642,585 variants to be matched.</code></pre>
+<pre><code>0 ambiguous SNPs have been removed.</code></pre>
+<pre><code>642,585 variants have been matched; 0 were flipped and 0 were reversed.</code></pre>
+<p><code>bigsnpr</code> tells us that we started out with 642,585 variants in our summary statistics, zero of these were ambiguous, zero were flipped/reversed, and 642,585 variants (that is, all of them) were matched succesfully to the genotype data. The code looks complicated though, so let’s break it down. Lines 1-14 define a function that takes our genotypes from earlier and extracts four pieces of information that we need to match the SNPs to those in our summary statistics. We can do this matching in two ways, either on SNP ID or on position. In this case we use position, and thus, <code>get_genotype_info_for_matching</code> returns a <code>data.frame</code> with four columns:</p>
+<ul>
+<li><code>chr</code> Contains the chromosome number</li>
+<li><code>pos</code> Contains the basepair position of the SNP</li>
+<li><code>a0</code> Contains the first allele</li>
+<li><code>a1</code> Contains the second allele.</li>
+</ul>
+<p>Line 16 loads up our intermediate genotype file from earlier. Line 17 calls <code>get_genotype_info_for_matching</code> on the <code>genotypes</code> object and extracts the information we need to match the SNPs. Lines 19-22 call <code>bigsnpr::snp_match</code> with the first argument being our summary statistics and the second argument being the <code>genotype_info</code> object. The returned <code>matched_summary_statistics</code> will now only contain the SNPs that match between the genotypes and summary statistics.</p>
+</div>
+<div id="step-4-calculate-ld-information" class="section level3 unnumbered hasAnchor">
+<h3>Step 4: Calculate LD information<a href="in-practice.html#step-4-calculate-ld-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>LDpred uses LD (SNP correlation) information to adjust the effect sizes from the discovery GWAS. We need to somehow supply this information to LDpred. We can do this in at least two ways:</p>
+<ol style="list-style-type: decimal">
+<li>Use a ready-made LD matrix.</li>
+<li>Use a reference sample of genotypes in which we calculate the pairwise SNP correlations. The reference sample can be external, or it can be a split of your analysis sample.</li>
+</ol>
+<p>When setting up your LD matrix, be very careful that the sampled population used to calculate the matrix matches with your analysis sample, and if you calculate your own LD information from genotype data, then also make sure you carefully QC the reference sample!</p>
+<p>We will discuss how to construct your own LD matrix using a reference sample. In our case, our reference sample well be the same as our analysis sample (that is, <code>genotypes.bed</code>). Strictly speaking, you should pick a sample that does not overlap with your analysis sample to avoid overfitting, but for the sake of example, we don’t bother. <!--If you are on a HPC system with crappy IO, you may want to do this entirely in memory instead of writing the LD matrix to disk, ask about this if you want to know how. It can also in some cases make sense to calculate an LD matrix once for your dataset for hapmap3 SNPs, you can then re-use it later on.--></p>
+<p>First, we need to map the base pair locations to genetic positions using <code>bigsnpr::snp_asGeneticPos</code>:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb42-1"><a href="in-practice.html#cb42-1"></a>genotypes          <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_attach</span>(<span class="st">&#39;data/genotypes.rds&#39;</span>);</span>
+<span id="cb42-2"><a href="in-practice.html#cb42-2"></a>genotype_info      <span class="ot">&lt;-</span> <span class="fu">get_genotype_info_for_matching</span>(genotypes);</span>
+<span id="cb42-3"><a href="in-practice.html#cb42-3"></a></span>
+<span id="cb42-4"><a href="in-practice.html#cb42-4"></a>THIS_IS_A_TUTORIAL <span class="ot">&lt;-</span> <span class="cn">TRUE</span>;</span>
+<span id="cb42-5"><a href="in-practice.html#cb42-5"></a></span>
+<span id="cb42-6"><a href="in-practice.html#cb42-6"></a><span class="cf">if</span> (THIS_IS_A_TUTORIAL) {</span>
+<span id="cb42-7"><a href="in-practice.html#cb42-7"></a>  genetic_positions <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/precomputed_genetic_positions.rds&#39;</span>);</span>
+<span id="cb42-8"><a href="in-practice.html#cb42-8"></a>} <span class="cf">else</span> {</span>
+<span id="cb42-9"><a href="in-practice.html#cb42-9"></a>  <span class="co"># this will download a bunch of large files</span></span>
+<span id="cb42-10"><a href="in-practice.html#cb42-10"></a>  genetic_positions <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_asGeneticPos</span>(</span>
+<span id="cb42-11"><a href="in-practice.html#cb42-11"></a>    genotype_info<span class="sc">$</span>chr,</span>
+<span id="cb42-12"><a href="in-practice.html#cb42-12"></a>    genotype_info<span class="sc">$</span>pos,</span>
+<span id="cb42-13"><a href="in-practice.html#cb42-13"></a>    <span class="at">dir    =</span> <span class="st">&#39;data&#39;</span>,</span>
+<span id="cb42-14"><a href="in-practice.html#cb42-14"></a>    <span class="at">ncores =</span> <span class="dv">1</span></span>
+<span id="cb42-15"><a href="in-practice.html#cb42-15"></a>  );</span>
+<span id="cb42-16"><a href="in-practice.html#cb42-16"></a>}</span></code></pre></div>
+<p>Lines 1-2 load up the genotypes once again and extracts info on the chromosome and position of each SNP. In a real world scenario you then run Lines 10-15 to get the genetic position, but since this downloads some large mapping files, I have precomputed these values. You can load the precomputed genetic positions by running Line 7.</p>
+<p>We can see that this just gives us a vector of positions, one position for each SNP:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="in-practice.html#cb43-1" tabindex="-1"></a><span class="fu">head</span>(genetic_positions);</span></code></pre></div>
+<pre class="default-output-style"><code>[1] 0.02124771 0.02140588 0.04348345 0.15951339 0.18835074 0.19432340</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="in-practice.html#cb45-1" tabindex="-1"></a><span class="fu">length</span>(genetic_positions);</span></code></pre></div>
+<pre class="default-output-style"><code>[1] 851065</code></pre>
+<p>Next, we need to calculate the LD matrix. This is basically a huge matrix containing the pairwise correlations between SNPs taken in some window around each SNP (assuming that long-range LD is neglible). We can calculate these correlations by calling <code>bigsnpr::snp_cor</code>. To conserve memory, we do this by chromosome and write the correlations for each chromosome to a large matrix on disk. In code, it would look something like this:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb47-1"><a href="in-practice.html#cb47-1"></a><span class="cf">for</span> (chromosome <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">22</span>) {</span>
+<span id="cb47-2"><a href="in-practice.html#cb47-2"></a>  indices_summary_statistics_on_this_chr <span class="ot">&lt;-</span> <span class="fu">which</span>(</span>
+<span id="cb47-3"><a href="in-practice.html#cb47-3"></a>    matched_summary_statistics<span class="sc">$</span>chr <span class="sc">==</span> chromosome</span>
+<span id="cb47-4"><a href="in-practice.html#cb47-4"></a>  );</span>
+<span id="cb47-5"><a href="in-practice.html#cb47-5"></a></span>
+<span id="cb47-6"><a href="in-practice.html#cb47-6"></a>  indices_genotypes_on_this_chr <span class="ot">&lt;-</span> matched_summary_statistics<span class="sc">$</span><span class="st">`</span><span class="at">_NUM_ID_</span><span class="st">`</span>[</span>
+<span id="cb47-7"><a href="in-practice.html#cb47-7"></a>    indices_summary_statistics_on_this_chr</span>
+<span id="cb47-8"><a href="in-practice.html#cb47-8"></a>  ];</span>
+<span id="cb47-9"><a href="in-practice.html#cb47-9"></a></span>
+<span id="cb47-10"><a href="in-practice.html#cb47-10"></a>  genetic_positions_on_this_chr <span class="ot">&lt;-</span> genetic_positions[</span>
+<span id="cb47-11"><a href="in-practice.html#cb47-11"></a>    indices_genotypes_on_this_chr</span>
+<span id="cb47-12"><a href="in-practice.html#cb47-12"></a>  ];</span>
+<span id="cb47-13"><a href="in-practice.html#cb47-13"></a></span>
+<span id="cb47-14"><a href="in-practice.html#cb47-14"></a>  corr0 <span class="ot">&lt;-</span> <span class="fu">snp_cor</span>(</span>
+<span id="cb47-15"><a href="in-practice.html#cb47-15"></a>    genotypes<span class="sc">$</span>genotypes,</span>
+<span id="cb47-16"><a href="in-practice.html#cb47-16"></a>    <span class="at">ind.col   =</span> indices_genotypes_on_this_chr,</span>
+<span id="cb47-17"><a href="in-practice.html#cb47-17"></a>    <span class="at">size      =</span> <span class="dv">3</span> <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb47-18"><a href="in-practice.html#cb47-18"></a>    <span class="at">infos.pos =</span> genetic_positions_on_this_chr</span>
+<span id="cb47-19"><a href="in-practice.html#cb47-19"></a>  );</span>
+<span id="cb47-20"><a href="in-practice.html#cb47-20"></a></span>
+<span id="cb47-21"><a href="in-practice.html#cb47-21"></a>  <span class="cf">if</span> (chromosome <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb47-22"><a href="in-practice.html#cb47-22"></a>    ld <span class="ot">&lt;-</span> Matrix<span class="sc">::</span><span class="fu">colSums</span>(corr0<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb47-23"><a href="in-practice.html#cb47-23"></a>    corr <span class="ot">&lt;-</span> <span class="fu">as_SFBM</span>(corr0, <span class="st">&quot;data/correlations&quot;</span>, <span class="at">compact =</span> <span class="cn">TRUE</span>);</span>
+<span id="cb47-24"><a href="in-practice.html#cb47-24"></a>  } <span class="cf">else</span> {</span>
+<span id="cb47-25"><a href="in-practice.html#cb47-25"></a>    ld <span class="ot">&lt;-</span> <span class="fu">c</span>(ld, Matrix<span class="sc">::</span><span class="fu">colSums</span>(corr0<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb47-26"><a href="in-practice.html#cb47-26"></a>    corr<span class="sc">$</span><span class="fu">add_columns</span>(corr0, <span class="fu">nrow</span>(corr))</span>
+<span id="cb47-27"><a href="in-practice.html#cb47-27"></a>  }</span>
+<span id="cb47-28"><a href="in-practice.html#cb47-28"></a>}</span></code></pre></div>
+<p>Line 1 sets up a loop over the chromosomes. Lines 2-4 figure out which row indices of the summary statistics that belong to the current chromosome. Lines 6-8 map the row indices in the summary statistics to the column indices in the genotypes. Lines 10-12 extract the genetic positions of the SNPs from the vector we calculate earlier. Lines 14-20 calculates the SNP correlations for the current chromsome, using the genotypes, the genotype column indices, the size of the correlation window, and the genetic positions of the SNPs. Lines 22-28 writes the correlation matrix to disk in a sparse matrix format and calculates the LD scores (that is, for each SNP, the sum of squared correlations with neighbouring SNPs in the window). The correlation matrix will be sparse/banded as we only look at correlation in a window. This is nice as we can store it using much less memory than a non-sparse matrix by packing the non-zero values together in a contiguous block of memory.</p>
+<p>The LD matrix code can take several minutes to run depending on your laptop. Since our reference panel is also quite small (only about 400 individuals), I have instead prepared an LD matrix and LD scores that we can load as follows (these files are large, so on Venetian WIFI the precomputed files may have been a mistake, let’s see!):</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb48-1"><a href="in-practice.html#cb48-1"></a>ld <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/precomputed_ld.rds&#39;</span>);</span>
+<span id="cb48-2"><a href="in-practice.html#cb48-2"></a></span>
+<span id="cb48-3"><a href="in-practice.html#cb48-3"></a><span class="cf">for</span> (chromosome <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">22</span>) {</span>
+<span id="cb48-4"><a href="in-practice.html#cb48-4"></a>  corr_chr <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
+<span id="cb48-5"><a href="in-practice.html#cb48-5"></a>    glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;data/precomputed_correlations_chr{chromosome}.rds&#39;</span>)</span>
+<span id="cb48-6"><a href="in-practice.html#cb48-6"></a>  );</span>
+<span id="cb48-7"><a href="in-practice.html#cb48-7"></a></span>
+<span id="cb48-8"><a href="in-practice.html#cb48-8"></a>  <span class="cf">if</span> (chromosome <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb48-9"><a href="in-practice.html#cb48-9"></a>    corr <span class="ot">&lt;-</span> <span class="fu">as_SFBM</span>(corr_chr, <span class="fu">tempfile</span>(<span class="at">tmpdir =</span> <span class="st">&#39;data&#39;</span>), <span class="at">compact =</span> <span class="cn">TRUE</span>);</span>
+<span id="cb48-10"><a href="in-practice.html#cb48-10"></a>    <span class="cf">next</span>;</span>
+<span id="cb48-11"><a href="in-practice.html#cb48-11"></a>  }</span>
+<span id="cb48-12"><a href="in-practice.html#cb48-12"></a></span>
+<span id="cb48-13"><a href="in-practice.html#cb48-13"></a>  corr<span class="sc">$</span><span class="fu">add_columns</span>(corr_chr, <span class="fu">nrow</span>(corr))</span>
+<span id="cb48-14"><a href="in-practice.html#cb48-14"></a>}</span></code></pre></div>
+<p>This code simply loads the pre-computed LD and correlation files for each chromosome and assembles the LD matrix.</p>
+<p>As usual, let’s see what’s inside these variables:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="in-practice.html#cb49-1" tabindex="-1"></a><span class="fu">str</span>(ld);</span></code></pre></div>
+<pre class="default-output-style"><code> num [1:642585] 3.35 3.43 3.2 3.38 3.05 ...</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="in-practice.html#cb51-1" tabindex="-1"></a>corr;</span></code></pre></div>
+<pre class="default-output-style"><code>A compact Sparse Filebacked Big Matrix with 642585 rows and 642585 columns.</code></pre>
+<p>We see that <code>ld</code> contains the LD scores and <code>corr</code> the correlation matrix for the SNPs. Notice that the matrix is approximately <span class="math inline">\(600,000 \times 600,000\)</span>, so we have to exploit the sparse structure of this matrix to do computations in a reasonable time.</p>
+</div>
+<div id="step-5-calculate-adjusted-weights-using-ldpred-inf" class="section level3 unnumbered hasAnchor">
+<h3>Step 5: Calculate adjusted weights using LDPred Inf<a href="in-practice.html#step-5-calculate-adjusted-weights-using-ldpred-inf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are now ready to calculate the adjusted effect sizes. LDpred needs the SNP heritability of our phenotype as input, so we estimate it first using LD Score regression (note that this is where we use the LD blocks stored in the <code>ld</code> variable):</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb53-1"><a href="in-practice.html#cb53-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(matched_summary_statistics)[, <span class="fu">list</span>(</span>
+<span id="cb53-2"><a href="in-practice.html#cb53-2"></a>  beta, beta_se, <span class="at">n_eff =</span> <span class="dv">500000</span></span>
+<span id="cb53-3"><a href="in-practice.html#cb53-3"></a>)];</span>
+<span id="cb53-4"><a href="in-practice.html#cb53-4"></a></span>
+<span id="cb53-5"><a href="in-practice.html#cb53-5"></a>ldsc <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_ldsc</span>(</span>
+<span id="cb53-6"><a href="in-practice.html#cb53-6"></a>  ld,</span>
+<span id="cb53-7"><a href="in-practice.html#cb53-7"></a>  <span class="fu">length</span>(ld),</span>
+<span id="cb53-8"><a href="in-practice.html#cb53-8"></a>  <span class="at">chi2        =</span> (betas<span class="sc">$</span>beta <span class="sc">/</span> betas<span class="sc">$</span>beta_se)<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb53-9"><a href="in-practice.html#cb53-9"></a>  <span class="at">sample_size =</span> <span class="dv">500000</span>,</span>
+<span id="cb53-10"><a href="in-practice.html#cb53-10"></a>  <span class="at">blocks      =</span> <span class="cn">NULL</span>,</span>
+<span id="cb53-11"><a href="in-practice.html#cb53-11"></a>  <span class="at">ncores      =</span> <span class="dv">1</span></span>
+<span id="cb53-12"><a href="in-practice.html#cb53-12"></a>);</span></code></pre></div>
+<p>Lines 1-3 extracts the effect sizes and their standard errors from the matched summary statistics, and adds the effective size sample size as an additional column. Normally, you the effective sample size will be given in the summary statistics or in supplementary materials. Lines 5-12 runs LD score regression by calling the <code>bigsnpr::snp_ldsc</code> function with the appropriate arguments.</p>
+<p>If we examine the output,</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="in-practice.html#cb54-1" tabindex="-1"></a><span class="fu">print</span>(ldsc);</span></code></pre></div>
+<pre class="default-output-style"><code>      int        h2 
+1.2372552 0.2393073 </code></pre>
+<p>we see that in our case the SNP heritability of BMI is around 0.239.</p>
+<p>Next, we call <code>bigsnpr::snp_ldpred2_inf</code> to calculate the LDpred Inf adjusted effect sizes. This should be relatively fast (couple of minutes), as the LDpred Inf model has an analytical solution. In code it looks like this:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="in-practice.html#cb56-1" tabindex="-1"></a>ldpred_inf_betas <span class="ot">&lt;-</span> bigsnpr<span class="sc">::</span><span class="fu">snp_ldpred2_inf</span>(</span>
+<span id="cb56-2"><a href="in-practice.html#cb56-2" tabindex="-1"></a>  <span class="at">corr    =</span> corr,</span>
+<span id="cb56-3"><a href="in-practice.html#cb56-3" tabindex="-1"></a>  <span class="at">df_beta =</span> <span class="fu">as.data.frame</span>(betas),</span>
+<span id="cb56-4"><a href="in-practice.html#cb56-4" tabindex="-1"></a>  <span class="at">h2      =</span> ldsc[[<span class="st">&#39;h2&#39;</span>]]</span>
+<span id="cb56-5"><a href="in-practice.html#cb56-5" tabindex="-1"></a>);</span></code></pre></div>
+<p>Notice that we use the LD correlation matrix and SNP heritability estimates here.</p>
+<p>After running the code, <code>ldpred_inf_betas</code> contains a vector of adjusted effect sizes that we can use to calculate the final LDpred Inf polygenic score in the next section. We will skip the non-infinitesimal LDpred and LDpred auto here, as they are much more computationally demanding. Feel free to give it a go though! You’ll need the functions <code>bigsnpr::snp_ldpred2_grid</code> and <code>bigsnpr::snp_ldpred2_auto</code>.</p>
+<div class="tip">
+<p><strong>Note</strong>: that the sample size above is the effective sample size. For a GWAS of a continuous trait, this is just the sample size used in the regression, but for a binary trait it would be <span class="math inline">\(4 / (1 / n_{controls} + 1 / n_{cases})\)</span>. Further care needs to be taken if you’ve meta-analysed or used a mixed model for the GWAS, check the documentation of <code>bigsnpr::snp_ldpred2_inf</code> for more details.</p>
+</div>
+</div>
+<div id="step-6-calculate-pgs-in-the-analysis-sample" class="section level3 unnumbered hasAnchor">
+<h3>Step 6: Calculate PGS in the analysis sample<a href="in-practice.html#step-6-calculate-pgs-in-the-analysis-sample" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nearly there! We can finally calculate the actual polygenic score for our analysis sample by multiplying the adjusted effect sizes with the allele counts and summing. This is really just a big matrix product of the adjusted effect size vector times the genotype matrix. Let’s calculate both the LDpred and unadjusted score as follows:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="in-practice.html#cb57-1" tabindex="-1"></a>ldpred_inf_weights <span class="ot">&lt;-</span> ldpred_inf_betas;</span>
+<span id="cb57-2"><a href="in-practice.html#cb57-2" tabindex="-1"></a>unadjusted_weights <span class="ot">&lt;-</span> betas<span class="sc">$</span>beta;</span>
+<span id="cb57-3"><a href="in-practice.html#cb57-3" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="in-practice.html#cb57-4" tabindex="-1"></a>polygenic_score_ldpred_inf <span class="ot">&lt;-</span> bigstatsr<span class="sc">::</span><span class="fu">big_prodMat</span>(</span>
+<span id="cb57-5"><a href="in-practice.html#cb57-5" tabindex="-1"></a>  genotypes<span class="sc">$</span>genotypes,</span>
+<span id="cb57-6"><a href="in-practice.html#cb57-6" tabindex="-1"></a>  <span class="fu">as.matrix</span>(ldpred_inf_weights),</span>
+<span id="cb57-7"><a href="in-practice.html#cb57-7" tabindex="-1"></a>  <span class="at">ind.col =</span> matched_summary_statistics<span class="sc">$</span><span class="st">`</span><span class="at">_NUM_ID_</span><span class="st">`</span></span>
+<span id="cb57-8"><a href="in-practice.html#cb57-8" tabindex="-1"></a>);</span>
+<span id="cb57-9"><a href="in-practice.html#cb57-9" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="in-practice.html#cb57-10" tabindex="-1"></a>polygenic_score_unadj <span class="ot">&lt;-</span> bigstatsr<span class="sc">::</span><span class="fu">big_prodMat</span>(</span>
+<span id="cb57-11"><a href="in-practice.html#cb57-11" tabindex="-1"></a>  genotypes<span class="sc">$</span>genotypes,</span>
+<span id="cb57-12"><a href="in-practice.html#cb57-12" tabindex="-1"></a>  <span class="fu">as.matrix</span>(unadjusted_weights),</span>
+<span id="cb57-13"><a href="in-practice.html#cb57-13" tabindex="-1"></a>  <span class="at">ind.col =</span> matched_summary_statistics<span class="sc">$</span><span class="st">`</span><span class="at">_NUM_ID_</span><span class="st">`</span></span>
+<span id="cb57-14"><a href="in-practice.html#cb57-14" tabindex="-1"></a>);</span>
+<span id="cb57-15"><a href="in-practice.html#cb57-15" tabindex="-1"></a></span>
+<span id="cb57-16"><a href="in-practice.html#cb57-16" tabindex="-1"></a>pgs <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb57-17"><a href="in-practice.html#cb57-17" tabindex="-1"></a>  <span class="at">individual_id  =</span> genotypes<span class="sc">$</span>fam<span class="sc">$</span>sample.ID,</span>
+<span id="cb57-18"><a href="in-practice.html#cb57-18" tabindex="-1"></a>  <span class="at">pgs_unadj      =</span> <span class="fu">scale</span>(<span class="fu">as.numeric</span>(polygenic_score_unadj))[,],</span>
+<span id="cb57-19"><a href="in-practice.html#cb57-19" tabindex="-1"></a>  <span class="at">pgs_ldpred_inf =</span> <span class="fu">scale</span>(<span class="fu">as.numeric</span>(polygenic_score_ldpred_inf))[,]</span>
+<span id="cb57-20"><a href="in-practice.html#cb57-20" tabindex="-1"></a>);</span></code></pre></div>
+<p>Let’s see what the PGS look like:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="in-practice.html#cb58-1" tabindex="-1"></a>pgs;</span></code></pre></div>
+<pre class="default-output-style"><code>##      individual_id   pgs_unadj pgs_ldpred_inf
+##   1:       HG00096  0.91257758      0.7453586
+##   2:       HG00097  0.16544719      0.2894498
+##   3:       HG00099 -0.32131954      0.3672929
+##   4:       HG00100 -0.07298954      0.3947967
+##   5:       HG00101 -0.27518278     -0.4925131
+##  ---                                         
+## 375:       NA20816 -0.56703353     -0.4587174
+## 376:       NA20818 -0.35247377      0.2957149
+## 377:       NA20819  0.02670394      0.4538005
+## 378:       NA20826  0.96508788      0.8142287
+## 379:       NA20828 -0.43356985     -0.3685740</code></pre>
+<p>We can also visualise the distributions of the standardised scores:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="in-practice.html#cb60-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">melt</span>(pgs, <span class="at">id.vars =</span> <span class="st">&#39;individual_id&#39;</span>), <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="in-practice.html#cb60-2" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">factor</span>(variable))) <span class="sc">+</span></span>
+<span id="cb60-3"><a href="in-practice.html#cb60-3" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;PGS method&#39;</span>);</span>
+<span id="cb60-4"><a href="in-practice.html#cb60-4" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="in-practice.html#cb61-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pgs, <span class="fu">aes</span>(<span class="at">x =</span> pgs_unadj, <span class="at">y =</span> pgs_ldpred_inf)) <span class="sc">+</span></span>
+<span id="cb61-2"><a href="in-practice.html#cb61-2" tabindex="-1"></a>  <span class="fu">geom_point</span>();</span>
+<span id="cb61-3"><a href="in-practice.html#cb61-3" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
+</div>
+<div id="step-7-evaluate-the-score" class="section level3 unnumbered hasAnchor">
+<h3>Step 7: Evaluate the score<a href="in-practice.html#step-7-evaluate-the-score" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once you have the LDPred PGS in a file or variable, you can proceeed to evaluate the PGS exactly as we did for PRSICE.</p>
+<p>Let’s load up the scores and merge (join…) them with the phenotype and covariate information:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="in-practice.html#cb62-1" tabindex="-1"></a>pheno <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/bmi_phenotype_final.txt&#39;</span>);</span>
+<span id="cb62-2"><a href="in-practice.html#cb62-2" tabindex="-1"></a>pcs   <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&#39;data/principal_components.txt&#39;</span>);</span>
+<span id="cb62-3"><a href="in-practice.html#cb62-3" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="in-practice.html#cb62-4" tabindex="-1"></a>pgs <span class="ot">&lt;-</span> pheno[pgs, on <span class="ot">=</span> <span class="fu">list</span>(individual_id)];</span>
+<span id="cb62-5"><a href="in-practice.html#cb62-5" tabindex="-1"></a>pgs <span class="ot">&lt;-</span> pcs[pgs, on <span class="ot">=</span> <span class="fu">list</span>(individual_id)];</span>
+<span id="cb62-6"><a href="in-practice.html#cb62-6" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="in-practice.html#cb62-7" tabindex="-1"></a>pgs;</span></code></pre></div>
+<pre class="default-output-style"><code>     individual_id       pc1        pc2       pc3          pc4          pc5          pc6          pc7          pc8          pc9         pc10      bmi   pgs_unadj pgs_ldpred_inf
+  1:       HG00096 0.0149253 -0.0329941 0.0157409  0.001711990  0.001789660 -0.007046590 -0.004616850 -0.007353750 -0.001695640  0.010025300 25.02283  0.91257758      0.7453586
+  2:       HG00097 0.0146554 -0.0330726 0.0168457 -0.000707850 -0.000456348 -0.008600460 -0.006101650 -0.002933910  0.001896050  0.003501450 24.85364  0.16544719      0.2894498
+  3:       HG00099 0.0147324 -0.0333974 0.0160621  0.002431070  0.000503637 -0.001959320 -0.001306260 -0.003846570  0.002051590 -0.000813858 23.68929 -0.32131954      0.3672929
+  4:       HG00100 0.0146498 -0.0329754 0.0158382 -0.002757970  0.002022980  0.002282410 -0.000977904 -0.001512480  0.002441920  0.007117570 27.01620 -0.07298954      0.3947967
+  5:       HG00101 0.0145233 -0.0328001 0.0164791  0.000286727 -0.001215870 -0.002031530 -0.000880223 -0.006986680  0.005061240  0.010133300 21.46162 -0.27518278     -0.4925131
+ ---                                                                                                                                                                            
+375:       NA20816 0.0123625 -0.0315886 0.0168734 -0.050645400  0.005178990  0.000868346  0.003185740 -0.001519410 -0.007032560  0.001529210 23.42486 -0.56703353     -0.4587174
+376:       NA20818 0.0129391 -0.0316833 0.0159664 -0.050710600  0.001097800  0.005481870 -0.004399510  0.003518680  0.001006330  0.009418120 19.88306 -0.35247377      0.2957149
+377:       NA20819 0.0129315 -0.0300569 0.0150815 -0.043687800 -0.001958790  0.005927480  0.000679378  0.000102744  0.004599080  0.003466100 25.00421  0.02670394      0.4538005
+378:       NA20826 0.0131451 -0.0322081 0.0165051 -0.049448900 -0.005022560 -0.001607400  0.002826350  0.001631950 -0.000103377  0.000611551 23.36876  0.96508788      0.8142287
+379:       NA20828 0.0119424 -0.0316353 0.0165979 -0.052374500 -0.000520645  0.009377760  0.003230950  0.009716170  0.005069250  0.004594450 28.16467 -0.43356985     -0.3685740</code></pre>
+<p>and then plot the scores against their phenotype</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="in-practice.html#cb64-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb64-2"><a href="in-practice.html#cb64-2" tabindex="-1"></a>    <span class="fu">melt</span>(pgs, <span class="at">measure.vars =</span> <span class="fu">c</span>(<span class="st">&#39;pgs_ldpred_inf&#39;</span>, <span class="st">&#39;pgs_unadj&#39;</span>)),</span>
+<span id="cb64-3"><a href="in-practice.html#cb64-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> bmi)</span>
+<span id="cb64-4"><a href="in-practice.html#cb64-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb64-5"><a href="in-practice.html#cb64-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb64-6"><a href="in-practice.html#cb64-6" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;loess&#39;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb64-7"><a href="in-practice.html#cb64-7" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Polygenic score&#39;</span>) <span class="sc">+</span></span>
+<span id="cb64-8"><a href="in-practice.html#cb64-8" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;BMI&#39;</span>) <span class="sc">+</span></span>
+<span id="cb64-9"><a href="in-practice.html#cb64-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> <span class="fu">factor</span>(</span>
+<span id="cb64-10"><a href="in-practice.html#cb64-10" tabindex="-1"></a>    variable,</span>
+<span id="cb64-11"><a href="in-practice.html#cb64-11" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;pgs_ldpred_inf&#39;</span>, <span class="st">&#39;pgs_unadj&#39;</span>),</span>
+<span id="cb64-12"><a href="in-practice.html#cb64-12" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;LDpred Inf&#39;</span>, <span class="st">&#39;Unadjusted&#39;</span>)</span>
+<span id="cb64-13"><a href="in-practice.html#cb64-13" tabindex="-1"></a>  ));</span>
+<span id="cb64-14"><a href="in-practice.html#cb64-14" tabindex="-1"></a>p;</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Let’s also run regressions to check if the direction of the associations between the PGS and phenotype are what we expect.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="in-practice.html#cb65-1" tabindex="-1"></a>m_formula <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;bmi ~ {paste0(&quot;pc&quot;, 1:10, collapse=&quot;+&quot;)}&#39;</span>) <span class="sc">|&gt;</span> <span class="fu">formula</span>();</span>
+<span id="cb65-2"><a href="in-practice.html#cb65-2" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="in-practice.html#cb65-3" tabindex="-1"></a>m_base   <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> pgs)</span>
+<span id="cb65-4"><a href="in-practice.html#cb65-4" tabindex="-1"></a>m_unadj  <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> <span class="fu">update</span>(. <span class="sc">~</span> . <span class="sc">+</span> <span class="fu">scale</span>(pgs_unadj)[,])      <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> pgs)</span>
+<span id="cb65-5"><a href="in-practice.html#cb65-5" tabindex="-1"></a>m_ldpred <span class="ot">&lt;-</span> m_formula <span class="sc">|&gt;</span> <span class="fu">update</span>(. <span class="sc">~</span> . <span class="sc">+</span> <span class="fu">scale</span>(pgs_ldpred_inf)[,]) <span class="sc">|&gt;</span> fixest<span class="sc">::</span><span class="fu">feols</span>(<span class="at">data =</span> pgs);</span></code></pre></div>
+<p>The regression output is</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="in-practice.html#cb66-1" tabindex="-1"></a>m_unadj;</span></code></pre></div>
+<pre class="default-output-style"><code>OLS estimation, Dep. Var.: bmi
+Observations: 379 
+Standard-errors: IID 
+                        Estimate Std. Error   t value   Pr(&gt;|t|)    
+(Intercept)            30.098825   5.591464  5.382995 1.3097e-07 ***
+pc1                  -230.467593 336.415747 -0.685068 4.9373e-01    
+pc2                   121.809384 166.588145  0.731201 4.6512e-01    
+pc3                    76.544612 107.494710  0.712078 4.7687e-01    
+pc4                     7.271897  13.849964  0.525048 5.9987e-01    
+pc5                    69.354299  61.420347  1.129175 2.5956e-01    
+pc6                     0.826704  45.624270  0.018120 9.8555e-01    
+pc7                   -31.995880  43.683837 -0.732442 4.6437e-01    
+pc8                  -108.073023  43.178806 -2.502918 1.2751e-02 *  
+pc9                   -41.989608  41.083858 -1.022046 3.0743e-01    
+pc10                   26.115131  30.238574  0.863636 3.8835e-01    
+scale(pgs_unadj)[, ]    0.390611   0.152812  2.556148 1.0986e-02 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 2.87899   Adj. R2: 0.01395</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="in-practice.html#cb68-1" tabindex="-1"></a>m_ldpred;</span></code></pre></div>
+<pre class="default-output-style"><code>OLS estimation, Dep. Var.: bmi
+Observations: 379 
+Standard-errors: IID 
+                             Estimate Std. Error   t value   Pr(&gt;|t|)    
+(Intercept)                 29.925298   5.581585  5.361434 1.4633e-07 ***
+pc1                       -242.537296 335.720955 -0.722437 4.7049e-01    
+pc2                        112.191124 166.042466  0.675677 4.9967e-01    
+pc3                         79.240815 107.359962  0.738085 4.6093e-01    
+pc4                          8.713316  13.809732  0.630955 5.2846e-01    
+pc5                         73.052500  61.388496  1.190003 2.3481e-01    
+pc6                         -1.799494  45.511695 -0.039539 9.6848e-01    
+pc7                        -32.895632  43.627958 -0.754003 4.5133e-01    
+pc8                       -103.642714  43.075776 -2.406056 1.6620e-02 *  
+pc9                        -44.022768  40.944702 -1.075176 2.8300e-01    
+pc10                        27.103270  30.196480  0.897564 3.7001e-01    
+scale(pgs_ldpred_inf)[, ]    0.418558   0.151448  2.763707 6.0030e-03 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 2.87474   Adj. R2: 0.016856</code></pre>
+<p>All looks good! Now let’s test the predictive power of the two polygenic scores by looking at their incremental <span class="math inline">\(R^2\)</span>:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="in-practice.html#cb70-1" tabindex="-1"></a>incremental_r2 <span class="ot">&lt;-</span> <span class="cf">function</span>(m, base) (</span>
+<span id="cb70-2"><a href="in-practice.html#cb70-2" tabindex="-1"></a>  fixest<span class="sc">::</span><span class="fu">r2</span>(m, <span class="at">type =</span> <span class="st">&#39;r2&#39;</span>) <span class="sc">-</span> fixest<span class="sc">::</span><span class="fu">r2</span>(base, <span class="at">type =</span> <span class="st">&#39;r2&#39;</span>)</span>
+<span id="cb70-3"><a href="in-practice.html#cb70-3" tabindex="-1"></a>);</span>
+<span id="cb70-4"><a href="in-practice.html#cb70-4" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="in-practice.html#cb70-5" tabindex="-1"></a><span class="fu">incremental_r2</span>(m_ldpred, m_base);</span></code></pre></div>
+<pre class="default-output-style"><code>##         r2 
+## 0.01986595</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="in-practice.html#cb72-1" tabindex="-1"></a><span class="fu">incremental_r2</span>(m_unadj, m_base);</span></code></pre></div>
+<pre class="default-output-style"><code>##        r2 
+## 0.0170443</code></pre>
+<p>In this case the incremental <span class="math inline">\(R^2\)</span> is slightly higher for LDpred compared to the unadjusted PGS. We can follow the same bootstrap procedure as earlier to get confidence intervals. We won’t show the code here, but feel free to give it a try yourself!</p>
+<script>
+$(".solution").each((i, sol) => {
+  const $sol     = $(sol);
+  const content  = $sol.html();
+
+  $sol.html(`<div class="solution-header" style="cursor: pointer;"><p><em>Solution</em>. <a href="#">(Click to reveal)</a></p></div><div class="solution-wrapper">${content}</div>`);
+
+  const $header  = $($sol.find('.solution-header').first());
+  const $wrapped = $($sol.find('.solution-wrapper').first());
+
+  $wrapped.hide();
+
+  $header.click(() => {
+    $wrapped.show();
+    $header.hide();
+  });
+});
+
+$(".tip").each((i, tip) => {
+  const $tip = $(tip);
+
+  $tip.css('position', 'relative');
+
+  $tip.prepend('<div class="tip-fade" style="background: linear-gradient(rgba(255, 255, 255, 0.1), 25%, rgba(255, 255, 255, 1.0)); position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></div>');
+
+  $tip.css('overflow', 'hidden');
+  $tip.css('height', '75px');
+  $tip.css('cursor', 'pointer');
+
+  const fade = $tip.find('.tip-fade').first();
+  const $fade = $(fade);
+
+  $tip.click(() => {
+    $tip.css('overflow', 'visible');
+    $tip.css('height', 'auto');
+    $tip.css('cursor', 'auto');
+    $fade.hide();
+  });
+} );
+</script>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>On Mac you will have to add the PRSice binary to your list of trusted applications, as the binary is not signed! Usually you can do this by right clicking the binary while holding CTRL and clicking <code>Open</code> in the menu, this will open a prompt asking whether you trust the application. On Windows there’s probably a similar procedure.<a href="in-practice.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>You can also use an older version of R. A major difference between R3 and R4 was the addition of the pipe operator <code>|&gt;</code>. If you want to use an old version of R then you can either replace the pipe with traditional nested function calls, or install the <code>magrittr</code> package which will give you the <code>%&gt;%</code> pipe operator.<a href="in-practice.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-in-practice.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

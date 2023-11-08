@@ -1,0 +1,4 @@
+in-practice
+computing-environment
+working-with-prsice
+working-with-bigsnpr-and-ldpred
