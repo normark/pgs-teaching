@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 In practice | Polygenic indices" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="" />
 
 
-<meta name="date" content="2023-11-08" />
+<meta name="date" content="2023-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,18 +215,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To set up your computing environment, you’ll need to do the following:</p>
 <ul>
 <li><p>Download and unpack <a href="https://choishingwan.github.io/PRSice/">PRSice</a>. Make sure to select the correct version for your platform as it contains a platform specific binary.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p></li>
-<li><p>Download and install <a href="https://r-project.org">R &gt;4</a>, if you haven’t already.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p></li>
+<li><p>Download and install <a href="https://r-project.org">R &gt;4.1.0</a>, if you haven’t already.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p></li>
 <li><p>Download and install <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>, or use your favorite text editor. If you are on Mac and do not use RStudio, then you will need to install <a href="https://www.xquartz.org/">XQuartz</a> to do plotting (and to export plots from PRSice).</p></li>
-<li><p>In R, install the following packages: <code>glue</code>, <code>data.table</code>, <code>ggplot2</code>, <code>bigsnpr</code>. Make sure you install dependencies as well. To do this, call <code>install.packages</code> in R with <code>dependencies = TRUE</code>:</p>
+<li><p>In R, install the following packages: <code>glue</code>, <code>data.table</code>, <code>ggplot2</code>, <code>bigsnpr</code>, <code>fixest</code>. Make sure you install dependencies as well. To do this, call <code>install.packages</code> in R with <code>dependencies = TRUE</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="in-practice.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
-<span id="cb1-2"><a href="in-practice.html#cb1-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&#39;data.table&#39;</span>, <span class="st">&#39;ggplot2&#39;</span>, <span class="st">&#39;bigsnpr&#39;</span>, <span class="st">&#39;glue&#39;</span>),</span>
+<span id="cb1-2"><a href="in-practice.html#cb1-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&#39;data.table&#39;</span>, <span class="st">&#39;ggplot2&#39;</span>, <span class="st">&#39;bigsnpr&#39;</span>, <span class="st">&#39;glue&#39;</span>, <span class="st">&#39;fixest&#39;</span>),</span>
 <span id="cb1-3"><a href="in-practice.html#cb1-3" tabindex="-1"></a>  <span class="at">dependencies =</span> <span class="cn">TRUE</span></span>
 <span id="cb1-4"><a href="in-practice.html#cb1-4" tabindex="-1"></a>);</span></code></pre></div>
 <p>We will assume throughout that you have loaded these packages into your global environment. You can do this by calling the <code>library</code> function for each package, like so:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="in-practice.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(data.table);</span>
 <span id="cb2-2"><a href="in-practice.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2);</span>
 <span id="cb2-3"><a href="in-practice.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(bigsnpr);</span>
-<span id="cb2-4"><a href="in-practice.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(glue);</span></code></pre></div>
+<span id="cb2-4"><a href="in-practice.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(glue);</span>
+<span id="cb2-5"><a href="in-practice.html#cb2-5" tabindex="-1"></a><span class="fu">library</span>(fixest);</span></code></pre></div>
 <p>You have to do this every time you open a new R session. Throughout the tutorial, all package-specific function calls will be prefixed by their package name, to make it clear which package they belong to. For example, if we want to call <code>snp_readBed</code> from the <code>bigsnpr</code> package, we will use <code>bigsnpr::snp_readBed</code>.</p></li>
 <li><p>For convenience, make sure R is in your path. On Mac/Linux this should happen automatically, but on <a href="https://choishingwan.github.io/PRSice/extra_steps/">Windows you may need to add it manually</a>.</p></li>
 </ul>
@@ -268,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre class="default-output-style"><code>          IID      bmi
    1: HG00096 25.02283
    2: HG00097 24.85364
-   3: HG00099 23.68929
+   3: HG00099 23.68930
    4: HG00100 27.01620
    5: HG00101 21.46162
   ---                 
@@ -277,8 +278,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1090: NA20819 25.00421
 1091: NA20826 23.36876
 1092: NA20828 28.16467</code></pre>
-<p>It is common to QC summary statistics by filtering on INFO score and MAF (minor allele frequency), if these are available in the summary statistics. When we call PRSice later on, we can do this filtering by setting certain command line arguments, so we don’t need to do it manually in R. Usually you’d want an INFO score threshold around 0.8 and a MAF threshold around 0.01. In our summary statistics, we do not have INFO score or MAF, so we can’t filter on this information.</p>
-<p>PRSice will automatically deal with strand flips and match the summary statistics up to the genotypes, by finding the (sub)set of SNPs that are in both datasets. However, PRSice will not automatically remove ambiguous SNPs, so you must either remove these beforehand in R (filter all variants where the alleles are A/T or G/C, and drop SNPs where the summary statistics and the genotype data report different alleles that cannot be matched), or use the <code>--extract</code> argument later on in PRsice. Other checks you may want to do is make sure that only chromosomes 1-22 are in the summary statistics (unless you specifically want the sex chromosomes!) and that any non-SNP variants have been removed (sometimes GWAS output can contain other types of variants!).</p>
+<p>It is common to QC summary statistics by filtering on INFO score and MAF (minor allele frequency), if these are available in the summary statistics. When we call PRSice later on, we can do this filtering by setting certain command line arguments, so we don’t need to do it manually in R. Usually you’d want an INFO score threshold around 0.8 and a MAF threshold around 0.01, but it depends on the application. In our summary statistics, we do not have INFO score or MAF, so we can’t filter on this information.</p>
+<p>PRSice will automatically deal with strand flips, and match the summary statistics up to the genotypes by finding the (sub)set of SNPs that are in both datasets. However, PRSice will not automatically remove ambiguous SNPs, so you must either remove these beforehand in R (filter all variants where the alleles are A/T or G/C, and drop SNPs where the summary statistics and the genotype data report different alleles that cannot be matched), or use the <code>--extract</code> argument later on in PRsice. Other checks you may want to do is make sure that only chromosomes 1-22 are in the summary statistics (unless you specifically want the sex chromosomes!) and that any non-SNP variants have been removed (sometimes GWAS output can contain other types of variants!).</p>
 <p>Often it is also helpful to know which allele was counted in the discovery GWAS, sometimes referred to as the effect or risk allele. However, when you test your polygenic score (Step 4), you can verify that the association has the correct sign, and if not, then flip the sign on your polygenic score.</p>
 <p>Note that PRSice expects all files to be whitespace delimited, so if you save your summary statistics from R, then make sure to set the appropriate delimiter. You should also avoid weird characters or spaces in column names, as they can cause trouble.</p>
 <p>In our case, the summary statistics in <code>data/bmi_summary_statistics_prsice.txt</code> have already been prepared and are ready to be fed into PRSice. You should still load them into R and have look though!</p>
@@ -310,7 +311,7 @@ We can specify the column names using the following arguments: `--chr, --A1, --A
 <span id="cb7-13"><a href="in-practice.html#cb7-13" tabindex="-1"></a>  <span class="at">--snp</span> MarkerName <span class="dt">\</span></span>
 <span id="cb7-14"><a href="in-practice.html#cb7-14" tabindex="-1"></a>  <span class="at">--pvalue</span> Pval <span class="dt">\</span></span>
 <span id="cb7-15"><a href="in-practice.html#cb7-15" tabindex="-1"></a>  <span class="at">--out</span> BMI_PGS</span></code></pre></div>
-<p>This command tells <code>Rscript</code> (the executable of the R interpreter) to run the R-script stored in <code>software/PRSice_mac/PRSice.R</code> and supply it with all the following command line arguments. Let’s go through each of them:</p>
+<p>Note that on Windows you’ll have to replace the backslash <code>\</code> with a hat <code>^</code>. The command tells <code>Rscript</code> (the executable of the R interpreter) to run the R-script stored in <code>software/PRSice_mac/PRSice.R</code> and supply it with all the following command line arguments. Let’s go through each of them:</p>
 <ul>
 <li><code>--prsice software/PRSice_mac/PRSice_mac</code> Tells PRSice.R to look for the PRSice binary at the specified path, in our case <code>software/PRSice_mac/PRSice_mac</code>. If you are on Windows or Linux, the path will be different.</li>
 <li><code>--base data/bmi_summary_statistics_prsice.txt</code> The path to the summary statistics from the discovery GWAS for our phenotype. In this case the path is <code>data/bmi_summary_statistics_prsice.txt</code></li>
@@ -327,7 +328,7 @@ We can specify the column names using the following arguments: `--chr, --A1, --A
 <ul>
 <li><code>--base-maf MAF:0.01</code> Sets the column name of the MAF (minor allele frequency), and following the colon, the threshold used to QC the summary statistics. Any variants below this MAF threshold will be dropped.</li>
 <li><code>--base-info INFO:0.8</code> Sets the column name of the INFO score, and following the colon, the threshold used to QC the summary statistics. Any variants below this INFO score threshold will be dropped.</li>
-<li><code>--cov path/to/covariates.txt</code> Path to a file with covariates that should be included when constructing the polygenic score. Could be sex, age, genetic principal components, etc.</li>
+<li><code>--cov path/to/covariates.txt</code> Path to a file with covariates to include when constructing the polygenic score. Could be sex, age, genetic principal components, etc.</li>
 <li><code>--clump-kb</code> The distance for clumping in kb (kilo bases). For example, if –clump-kb 250 is provided, PRSice will clump any SNPs that is within 250kb to both end of the index SNP, therefore a 500kb window with the index SNP at the center. Defaults to 250kb.</li>
 <li><code>--clump-r2</code> The r2 threshold for clumping. Defaults to 0.1.</li>
 <li><code>--clump-p</code> The p-value threshold use for clumping. Defaults to 1.</li>
@@ -343,7 +344,7 @@ If you use PRSice in any published work, please cite:
 Choi SW, O&#39;Reilly PF.
 PRSice-2: Polygenic Risk Score Software for Biobank-Scale Data.
 GigaScience 8, no. 7 (July 1, 2019)
-2023-11-08 12:08:09
+2023-11-09 17:11:10
 ./software/PRSice_mac/PRSice_mac \
     --a1 A1 \
     --a2 A2 \
@@ -362,7 +363,7 @@ GigaScience 8, no. 7 (July 1, 2019)
     --pheno data/bmi_phenotype_prsice.txt \
     --pheno-col bmi \
     --pvalue Pval \
-    --seed 287119957 \
+    --seed 3205479577 \
     --snp MarkerName \
     --stat Beta \
     --target data/genotypes_prsice \
@@ -448,7 +449,7 @@ empirical P-value. </code></pre>
 <span id="cb11-15"><a href="in-practice.html#cb11-15"></a>  <span class="at">--snp</span> MarkerName <span class="dt">\</span></span>
 <span id="cb11-16"><a href="in-practice.html#cb11-16"></a>  <span class="at">--pvalue</span> Pval <span class="dt">\</span></span>
 <span id="cb11-17"><a href="in-practice.html#cb11-17"></a>  <span class="at">--out</span> BMI_PGS</span></code></pre></div>
-<p>Notice the new arguments on Lines 9-10. We won’t show the ouput here, but you can try it yourself.</p>
+<p>Notice the new arguments on Lines 9-10. We won’t show the ouput here, but you can try it yourself. Again, on Windows you’ll have to replace the backslash <code>\</code> with a hat <code>^</code>.</p>
 <!--Rscript software/PRSice_mac/PRSice.R --prsice software/PRSice_mac/PRSice_mac --base data/bmi_summary_statistics_prsice.txt --target data/genotypes --binary-target F --pheno data/bmi_phenotype_prsice.txt --ignore-fid --pheno-col bmi --base-info info:0.8 --beta --chr chr --A1 ref --A2 alt --stat effalt --snp rs --bp pos --pvalue pval --out BMI_PGS
 
 Rscript software/PRSice_mac/PRSice.R --prsice software/PRSice_mac/PRSice_mac --base data/data_chapter10/BMI.txt --target data/data_chapter10/1kg_hm3_qc --binary-target F --pheno data/bmi_phenotype_prsice.txt --ignore-fid --pheno-col bmi --beta --A1 A1 --A2 A2 --stat Beta --snp MarkerName --pvalue Pval --extract BMI_PGS.valid --out BMI_PGS-->
@@ -476,7 +477,7 @@ Rscript software/PRSice_mac/PRSice.R --prsice software/PRSice_mac/PRSice_mac --b
 <pre class="default-output-style"><code>          IID      bmi           pgs       pc1        pc2       pc3          pc4          pc5          pc6          pc7          pc8          pc9         pc10
    1: HG00096 25.02283 -3.847227e-05 0.0149253 -0.0329941 0.0157409  0.001711990  0.001789660 -0.007046590 -0.004616850 -0.007353750 -0.001695640  0.010025300
    2: HG00097 24.85364 -5.954122e-05 0.0146554 -0.0330726 0.0168457 -0.000707850 -0.000456348 -0.008600460 -0.006101650 -0.002933910  0.001896050  0.003501450
-   3: HG00099 23.68929 -4.882462e-05 0.0147324 -0.0333974 0.0160621  0.002431070  0.000503637 -0.001959320 -0.001306260 -0.003846570  0.002051590 -0.000813858
+   3: HG00099 23.68930 -4.882462e-05 0.0147324 -0.0333974 0.0160621  0.002431070  0.000503637 -0.001959320 -0.001306260 -0.003846570  0.002051590 -0.000813858
    4: HG00100 27.01620 -4.868976e-05 0.0146498 -0.0329754 0.0158382 -0.002757970  0.002022980  0.002282410 -0.000977904 -0.001512480  0.002441920  0.007117570
    5: HG00101 21.46162 -5.733523e-05 0.0145233 -0.0328001 0.0164791  0.000286727 -0.001215870 -0.002031530 -0.000880223 -0.006986680  0.005061240  0.010133300
   ---                                                                                                                                                         
@@ -551,7 +552,7 @@ giving us <span class="math inline">\(R^2_{unres}\)</span>. The incremental <spa
 <span id="cb22-14"><a href="in-practice.html#cb22-14"></a>    );</span>
 <span id="cb22-15"><a href="in-practice.html#cb22-15"></a>  }</span>
 <span id="cb22-16"><a href="in-practice.html#cb22-16"></a>) <span class="sc">|&gt;</span> boot<span class="sc">::</span><span class="fu">boot.ci</span>(<span class="at">type =</span> <span class="st">&#39;norm&#39;</span>);</span></code></pre></div>
-<p>Let’s break this down. Line 1 first loads the <code>boot</code> package that has some useful helper functions. Line 3 sets up the formula for our linear model. Lines 5-13 call <code>boot::boot</code> with the relevant arguments: Lines 5 and 6 sets the arguments for the data to resample, and the number of replications. Lines 8-11 define the function that should be called on each bootstrap dataset to calculate the relevant statistics, in our case the incremental <span class="math inline">\(R^2\)</span>. The function should take the original dataset as its first argument, a set of resampled row indices as its second argument, and return the value of the statistic when evaluated on this dataset. Line 13 pipes the output into <code>boot::boot.ci</code> to calculate a bootstrap confidence interval, in this case using a normal approximation.</p>
+<p>Let’s break this down. Line 1 first loads the <code>boot</code> package that has some useful helper functions. Line 3 sets up the formula for our linear model. Lines 5-13 call <code>boot::boot</code> with the relevant arguments: Lines 5 and 6 set the arguments for the data to resample, and the number of replications. Lines 8-11 define the function that should be called on each bootstrap dataset to calculate the relevant statistics, in our case the incremental <span class="math inline">\(R^2\)</span>. The function should take the original dataset as its first argument, a set of resampled row indices as its second argument, and return the value of the statistic when evaluated on this dataset. Line 13 pipes the output into <code>boot::boot.ci</code> to calculate a bootstrap confidence interval, in this case using a normal approximation.</p>
 <p>If we print <code>confidence_interval</code>, we get the following information:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="in-practice.html#cb23-1" tabindex="-1"></a><span class="fu">print</span>(confidence_interval);</span></code></pre></div>
 <pre class="default-output-style"><code>BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
@@ -570,9 +571,9 @@ boot::boot.ci(boot.out = boot::boot(data = as.data.frame(d),
 
 Intervals : 
 Level      Normal        
-95%   ( 0.0584,  0.1186 )  
+95%   ( 0.0598,  0.1191 )  
 Calculations and Intervals on Original Scale</code></pre>
-<p>telling us that the (normal approx.) bootstrapped 0.95 CI for the incremental <span class="math inline">\(R^2\)</span> is [0.058, 0.119].</p>
+<p>telling us that the (normal approx.) bootstrapped 0.95 CI for the incremental <span class="math inline">\(R^2\)</span> is [0.06, 0.119].</p>
 </div>
 </div>
 <div id="working-with-bigsnpr-and-ldpred" class="section level2 hasAnchor" number="1.3">
@@ -691,11 +692,9 @@ Calculations and Intervals on Original Scale</code></pre>
 <p>These summary statistics have already been cleaned up somewhat, but in practice we should make sure that only chromosome 1-22 are in the summary statistics (unless you specifically want the sex chromosomes!), that non-SNP variants have been removed, and that we drop SNPs with a low MAF or INFO score (if these columns are in the summary statistics, they may not be!). Let’s do that in R:
 ````</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="in-practice.html#cb30-1" tabindex="-1"></a>summary_statistics <span class="ot">&lt;-</span> summary_statistics[</span>
-<span id="cb30-2"><a href="in-practice.html#cb30-2" tabindex="-1"></a>  <span class="fu">nchar</span>(ref) <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
-<span id="cb30-3"><a href="in-practice.html#cb30-3" tabindex="-1"></a>  <span class="fu">nchar</span>(alt) <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
-<span id="cb30-4"><a href="in-practice.html#cb30-4" tabindex="-1"></a>  info <span class="sc">&gt;</span> <span class="fl">0.8</span> <span class="sc">&amp;</span></span>
-<span id="cb30-5"><a href="in-practice.html#cb30-5" tabindex="-1"></a>  chr <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">22</span></span>
-<span id="cb30-6"><a href="in-practice.html#cb30-6" tabindex="-1"></a>];</span></code></pre></div>
+<span id="cb30-2"><a href="in-practice.html#cb30-2" tabindex="-1"></a>  info <span class="sc">&gt;</span> <span class="fl">0.8</span> <span class="sc">&amp;</span></span>
+<span id="cb30-3"><a href="in-practice.html#cb30-3" tabindex="-1"></a>  chr <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">22</span></span>
+<span id="cb30-4"><a href="in-practice.html#cb30-4" tabindex="-1"></a>];</span></code></pre></div>
 <!--These summary statistics do not contain the effective sample size, but in this case we can assume it's 500,000 individuals. We set this as a separate column on the dataset, so it's available for LDpred later on:
 
 
@@ -703,14 +702,14 @@ Calculations and Intervals on Original Scale</code></pre>
 summary_statistics[, n := 500000];
 ```
 -->
-<p><code>bigsnpr</code> will automatically deal with strand flips and get rid of ambiguous SNPs later when we match the summary statistics to the genotype data using <code>bigsnpr::snp_match</code>, so we don’t need to worry about it here.</p>
+<p><code>bigsnpr</code> will automatically deal with strand flips, reversed alleles, and get rid of ambiguous SNPs later when we match the summary statistics to the genotype data using <code>bigsnpr::snp_match</code>, so we don’t need to worry about it here.</p>
 <p>Once thing we didn’t discuss in the PRSice example is that it’s usually also a good idea to check if the genome builds used in the summary statistics and the genotype data are the same. If they are not, then we can convert them using a tool like <code>liftover</code>, check the documentation for <code>bigsnpr::snp_modifyBuild</code>. As our data have been handpicked for the tutorial, we know that they are in the correct build, so we will skip this step.</p>
 <!--- TODO: add the following
 
 Another procedure that can further improve the precision of the PGS, is to compare the allele frequencies in the summary statistic against the genotypes in our analysis sample. See also XXXX. We can go about this as follows.
 
 --->
-<p>For LDPred, it’s usually recommended to filter the SNPs down to hapmap3 SNPs (about 1.1 million SNPs). To do this, we first download a list of all the Hapmap3 SNPs:</p>
+<p>For LDpred, it’s usually recommended to filter the SNPs down to HapMap3 SNPs (about 1.1 million SNPs). To do this, we first download a list of all the HapMap3 SNPs:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="in-practice.html#cb31-1" tabindex="-1"></a>download_hapmap3_if_needed <span class="ot">&lt;-</span> <span class="cf">function</span>(destination_path) {</span>
 <span id="cb31-2"><a href="in-practice.html#cb31-2" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">file.exists</span>(destination_path)) <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>));</span>
 <span id="cb31-3"><a href="in-practice.html#cb31-3" tabindex="-1"></a></span>
@@ -878,7 +877,7 @@ Remove sex-chromosomes.-->
 <span id="cb47-26"><a href="in-practice.html#cb47-26"></a>    corr<span class="sc">$</span><span class="fu">add_columns</span>(corr0, <span class="fu">nrow</span>(corr))</span>
 <span id="cb47-27"><a href="in-practice.html#cb47-27"></a>  }</span>
 <span id="cb47-28"><a href="in-practice.html#cb47-28"></a>}</span></code></pre></div>
-<p>Line 1 sets up a loop over the chromosomes. Lines 2-4 figure out which row indices of the summary statistics that belong to the current chromosome. Lines 6-8 map the row indices in the summary statistics to the column indices in the genotypes. Lines 10-12 extract the genetic positions of the SNPs from the vector we calculate earlier. Lines 14-20 calculates the SNP correlations for the current chromsome, using the genotypes, the genotype column indices, the size of the correlation window, and the genetic positions of the SNPs. Lines 22-28 writes the correlation matrix to disk in a sparse matrix format and calculates the LD scores (that is, for each SNP, the sum of squared correlations with neighbouring SNPs in the window). The correlation matrix will be sparse/banded as we only look at correlation in a window. This is nice as we can store it using much less memory than a non-sparse matrix by packing the non-zero values together in a contiguous block of memory.</p>
+<p>Line 1 sets up a loop over the chromosomes. Lines 2-4 figure out which row indices of the summary statistics that belong to the current chromosome. Lines 6-8 map the row indices in the summary statistics to the column indices in the genotypes. Lines 10-12 extract the genetic positions of the SNPs from the vector we calculate earlier. Lines 14-20 calculate the SNP correlations for the current chromsome, using the genotypes, the genotype column indices, the size of the correlation window, and the genetic positions of the SNPs. Lines 22-28 write the correlation matrix to disk in a sparse matrix format and calculates the LD scores (that is, for each SNP, the sum of squared correlations with neighbouring SNPs in the window). The correlation matrix will be sparse/banded as we only look at correlation in a window. This is nice as we can store it using much less memory than a non-sparse matrix by packing the non-zero values together in a contiguous block of memory.</p>
 <p>The LD matrix code can take several minutes to run depending on your laptop. Since our reference panel is also quite small (only about 400 individuals), I have instead prepared an LD matrix and LD scores that we can load as follows (these files are large, so on Venetian WIFI the precomputed files may have been a mistake, let’s see!):</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb48-1"><a href="in-practice.html#cb48-1"></a>ld <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&#39;data/precomputed_ld.rds&#39;</span>);</span>
 <span id="cb48-2"><a href="in-practice.html#cb48-2"></a></span>
@@ -917,7 +916,7 @@ Remove sex-chromosomes.-->
 <span id="cb53-10"><a href="in-practice.html#cb53-10"></a>  <span class="at">blocks      =</span> <span class="cn">NULL</span>,</span>
 <span id="cb53-11"><a href="in-practice.html#cb53-11"></a>  <span class="at">ncores      =</span> <span class="dv">1</span></span>
 <span id="cb53-12"><a href="in-practice.html#cb53-12"></a>);</span></code></pre></div>
-<p>Lines 1-3 extracts the effect sizes and their standard errors from the matched summary statistics, and adds the effective size sample size as an additional column. Normally, you the effective sample size will be given in the summary statistics or in supplementary materials. Lines 5-12 runs LD score regression by calling the <code>bigsnpr::snp_ldsc</code> function with the appropriate arguments.</p>
+<p>Lines 1-3 extract the effect sizes and their standard errors from the matched summary statistics, and adds the effective size sample size as an additional column. Normally, you the effective sample size will be given in the summary statistics or in supplementary materials. Lines 5-12 run LD score regression by calling the <code>bigsnpr::snp_ldsc</code> function with the appropriate arguments.</p>
 <p>If we examine the output,</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="in-practice.html#cb54-1" tabindex="-1"></a><span class="fu">print</span>(ldsc);</span></code></pre></div>
 <pre class="default-output-style"><code>      int        h2 
@@ -997,7 +996,7 @@ Remove sex-chromosomes.-->
 <pre class="default-output-style"><code>     individual_id       pc1        pc2       pc3          pc4          pc5          pc6          pc7          pc8          pc9         pc10      bmi   pgs_unadj pgs_ldpred_inf
   1:       HG00096 0.0149253 -0.0329941 0.0157409  0.001711990  0.001789660 -0.007046590 -0.004616850 -0.007353750 -0.001695640  0.010025300 25.02283  0.91257758      0.7453586
   2:       HG00097 0.0146554 -0.0330726 0.0168457 -0.000707850 -0.000456348 -0.008600460 -0.006101650 -0.002933910  0.001896050  0.003501450 24.85364  0.16544719      0.2894498
-  3:       HG00099 0.0147324 -0.0333974 0.0160621  0.002431070  0.000503637 -0.001959320 -0.001306260 -0.003846570  0.002051590 -0.000813858 23.68929 -0.32131954      0.3672929
+  3:       HG00099 0.0147324 -0.0333974 0.0160621  0.002431070  0.000503637 -0.001959320 -0.001306260 -0.003846570  0.002051590 -0.000813858 23.68930 -0.32131954      0.3672929
   4:       HG00100 0.0146498 -0.0329754 0.0158382 -0.002757970  0.002022980  0.002282410 -0.000977904 -0.001512480  0.002441920  0.007117570 27.01620 -0.07298954      0.3947967
   5:       HG00101 0.0145233 -0.0328001 0.0164791  0.000286727 -0.001215870 -0.002031530 -0.000880223 -0.006986680  0.005061240  0.010133300 21.46162 -0.27518278     -0.4925131
  ---                                                                                                                                                                            
